@@ -117,8 +117,8 @@
             background: none;
             border: 2px solid var(--border);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -176,10 +176,53 @@
             z-index: 2;
         }
 
+        /* Buzzing Bee */
+
+        .bee {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.bee-body {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 40%, #ffd166 35%, #fca311 36% 55%, #1f2937 56% 58%, #ffd166 59% 78%, #1f2937 79% 81%, #ffd166 82%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.bee-wing {
+    position: absolute;
+    width: 28px;
+    height: 18px;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0.1));
+    border-radius: 50%;
+    top: -8px;
+    animation: wing-flap 0.15s ease-in-out infinite alternate;
+    opacity: 0.9;
+}
+
+.bee-wing.left { left: -12px; transform: rotate(-20deg); }
+.bee-wing.right { right: -12px; transform: rotate(20deg); }
+
+@keyframes wing-flap {
+    from { transform: rotate(-20deg) scale(1.1); }
+    to   { transform: rotate(20deg) scale(0.9); }
+}
+
+
         .hero h1 {
-            font-size: 3.5rem;
+            font-size:3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            letter-spacing: -0.02em;
             background: linear-gradient(135deg, var(--accent), #805ad5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -188,7 +231,7 @@
         }
 
         .hero .tagline {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2.4vw, 1.25rem);
             color: var(--text-secondary);
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.2s both;
@@ -387,7 +430,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
+            font-size: 2.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -448,6 +491,12 @@
         .project-links a:hover {
             color: var(--accent-hover);
             text-decoration: underline;
+        }
+
+        /* Subtle card lift and outline for focus state */
+        .project-card:focus-within {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
         }
 
         /* Contact Section */
@@ -541,13 +590,22 @@
         }
 
         /* Footer */
-        footer {
-            background: var(--primary-bg);
-            padding: 2rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
+        .footer {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: #fff;
+    background: linear-gradient(135deg, #3182ce, #6b46c1); /* bolder blue → deep purple */
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25); /* subtle depth */
+}
+
+.footer p {
+    margin: 0;
+    font-weight: 500;
+    color: #fff; /* ensures readability */
+}
 
         /* Animations */
         @keyframes fadeInUp {
@@ -664,13 +722,19 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Ayanda Joseph</h1>
-            <p class="tagline">Computer Science Student • Web Developer • Tech Explorer</p>
+            <h1 >Ayanda Joseph</h1>
+            <p class="tagline">AI/ML enthusiast • Fullstack developer • Tech Explorer </p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="#projects" class="btn btn-primary" aria-label="View Projects">View Projects</a>
+                <a href="#contact" class="btn btn-secondary" aria-label="Contact Ayanda">Contact</a>
             </div>
         </div>
+        <div class="bee" aria-hidden="true">
+           <div class="bee-body"></div>
+           <div class="bee-wing left"></div>
+           <div class="bee-wing right"></div>
+        </div>
+
     </section>
 
     <section id="about" class="fade-in">
@@ -680,13 +744,13 @@
             <div class="about-text">
                 <h3>Passionate About Technology & Innovation</h3>
                 <p>
-                    I'm a Computer Science student at UniAbuja with a deep passion for coding, web development, and cutting-edge technology. My journey in tech is inspired by visionaries like Mark Zuckerberg, and I'm constantly driven to push the boundaries of what's possible.
+                    I'm a Computer Science student with deep passion for coding, AI, web/app development,technology and Cybersecurity. My journey in tech is inspired by Visionaries like Mark Zuck, Sam Altman, and I'm constantly driven to push the boundaries of what's possible.
                 </p>
                 <p>
-                    My expertise spans across multiple technologies, from Python web frameworks like Django and Flask to modern front-end development with HTML, CSS, and JavaScript. I also specialize in design tools like Figma and WordPress development, having successfully delivered websites for various clients.
+                    My expertise spans across multiple languages, from Python frameworks like Django and Flask to modern front-end development with html/css/javascript, React/Tailwind and backend web development using Node.js & Mongo db. I also design with tools like Figma, having successfully delivered projects for various clients.
                 </p>
                 <p>
-                    My ultimate dream is to build a strong tech career while scaling my knowledge in coding, artificial intelligence, and cybersecurity. I believe in the power of technology to transform lives and solve real-world problems.
+                    My ultimate dream is to build a strong tech career while scaling my knowledge in coding, fullstack development artificial intelligence, and cybersecurity. I believe in the power of technology to transform lives and solve real-world problems.
                 </p>
             </div>
         </div>
@@ -699,16 +763,16 @@
                 <h3>Backend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Node.js</span>
                     <span class="skill-tag">Flask</span>
-                    <span class="skill-tag">Logic Programming</span>
+                    <span class="skill-tag">Mongo db</span>
                 </div>
             </div>
             <div class="skill-category">
                 <h3>Frontend Development</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">HTML / React</span>
+                    <span class="skill-tag">CSS / tailwind</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">Responsive Design</span>
                 </div>
@@ -718,7 +782,7 @@
                 <div class="skill-tags">
                     <span class="skill-tag">Figma</span>
                     <span class="skill-tag">WordPress</span>
-                    <span class="skill-tag">Elementor Pro</span>
+                    <span class="skill-tag">WIX</span>
                     <span class="skill-tag">UI/UX Design</span>
                 </div>
             </div>
@@ -738,18 +802,17 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-header">₿</div>
+                <div class="project-header">👨🏾‍🌾</div>
                 <div class="project-content">
-                    <h3>Crypto Trading Platform</h3>
-                    <p>A comprehensive cryptocurrency trading website built with HTML, CSS, JavaScript, and Python. Features real-time data, user authentication, and modern UI design.</p>
+                    <h3>Farmers Empowerment Website</h3>
+                    <p>A comprehensive Farming website built for clients with HTML, CSS, JavaScript, and Python. Features real-time data, services, and modern UI design.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">HTM/CSS</span>
                         <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Python(Flask)</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://holykeyz.github.io/Joseph-website/" target="_blank">Live Demo</a>
+                        <a href="https://squarefarms2.netlify.app/" target="_blank">Live Demo</a>
                         <a href="#contact">Learn More</a>
                     </div>
                 </div>
@@ -757,34 +820,34 @@
             <div class="project-card">
                 <div class="project-header">🏢</div>
                 <div class="project-content">
-                    <h3>Business Website Portfolio</h3>
-                    <p>Collection of professional business websites built for clients using WordPress and Elementor Pro. Focus on conversion optimization and user experience.</p>
+                    <h3>Business Real estate Website</h3>
+                    <p>A professional real estate website built for client using frontend languages, implented with backend. Focus on conversion optimization and user experience.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">WordPress</span>
-                        <span class="tech-tag">Elementor Pro</span>
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">Custom CSS</span>
+                        <span class="tech-tag">react/tailwind/</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">node.js</span>
+                        <span class="tech-tag">Mongo db</span>
                     </div>
                     <div class="project-links">
-                        <a href="#contact">View Portfolio</a>
-                        <a href="#contact">Contact</a>
+                        <a href="https://joayandarealestate.netlify.app" target="_blank"> Live demo</a>
+                        <a href="#contact"> Contact</a>
                     </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-header">🎨</div>
+                <div class="project-header">🪙</div>
                 <div class="project-content">
-                    <h3>UI/UX Design Projects</h3>
-                    <p>Modern web designs created with Figma, focusing on user experience, accessibility, and contemporary design principles for various client projects.</p>
+                    <h3>Crypto Mining Web App Project</h3>
+                    <p>Complex mining web app , focusing on functionality, web apis,database and UI/UX, A team project.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">Figma</span>
-                        <span class="tech-tag">UI Design</span>
-                        <span class="tech-tag">UX Research</span>
-                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">React/tailwind</span>
+                        <span class="tech-tag">Json/js</span>
+                        <span class="tech-tag">node.js/mongo db</span>
+                        <span class="tech-tag">Prototyping/ UX research</span>
                     </div>
                     <div class="project-links">
-                        <a href="#contact">View Designs</a>
-                        <a href="#contact">Collaborate</a>
+                        <a href="https://holykeyz.github.io/Joseph-website/" target="_blank">View demo</a>
+                        <a href="#contact">Collaborate on project</a>
                     </div>
                 </div>
             </div>
@@ -795,8 +858,7 @@
         <h2 class="section-title">Let's Connect</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p>I'm always open to discussing new opportunities, collaborating on exciting projects, or just having a conversation about technology and innovation.</p>
+                <h3>Click Below🫡😊</h3>
                 <div class="contact-links">
                     <a href="mailto:ayandajoseph390@gmail.com" class="contact-link">
                         <span>📧</span>
@@ -804,12 +866,14 @@
                     </a>
                     <a href="https://github.com/HOKYEKYZ" target="_blank" class="contact-link">
                         <span>💻</span>
-                        <span>HOKYEKYZ (Joseph Ayanda)</span>
+                        <span>Github - Joseph Ayanda</span>
                     </a>
                     <a href="tel:+2349019029665" class="contact-link">
                         <span>📱</span>
                         <span>+234 901 902 9665</span>
                     </a>
+
+                    <p>I'm always open to discussing new opportunities, collaborating on exciting projects, or just having a conversation about technology and innovation.</p>
                 </div>
             </div>
             <div class="contact-form">
@@ -836,7 +900,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="footer">
         <p>&copy; 2025 Ayanda Joseph. Built with passion and dedication to excellence.</p>
     </footer>
 
@@ -861,24 +925,24 @@
                 localStorage.setItem('theme', 'light');
             } else {
                 body.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = '☀️';
+                themeToggle.textContent = '🔆';
                 localStorage.setItem('theme', 'dark');
             }
         });
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.querySelector('.nav-links');
+        const navList = document.querySelector('.nav-links');
 
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            navList.classList.toggle('active');
+            mobileMenuBtn.textContent = navList.classList.contains('active') ? '✕' : '☰';
         });
 
         // Close mobile menu when clicking on a link
-        navLinks.querySelectorAll('a').forEach(link => {
+        navList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+                navList.classList.remove('active');
                 mobileMenuBtn.textContent = '☰';
             });
         });
@@ -1035,7 +1099,14 @@
             }
             
             // You can add this greeting somewhere in your interface if desired
-            console.log(greeting + ' Welcome to my portfolio!');
+            // Replace console.log line with:
+const hero = document.querySelector('.hero-content');
+const greetingEl = document.createElement('h2');
+greetingEl.textContent = greeting + ' Welcome to my portfolio!';
+greetingEl.style.marginBottom = '1rem';
+greetingEl.style.color = 'var(--accent)';
+hero.prepend(greetingEl);
+
         };
         
         updateGreeting();
@@ -1106,6 +1177,42 @@
                 document.body.style.opacity = '1';
             }, 100);
         });
+
+// 🐝 Bee flight across entire hero section
+const bee = document.querySelector('.bee');
+const hero = document.querySelector('.hero');
+let angle = 0;
+let speed = 0.01;  // lower = slower orbit
+let radiusX, radiusY;
+
+function flyBee() {
+    if (!bee || !hero) return;
+
+    const heroRect = hero.getBoundingClientRect();
+
+    // Orbit radii cover most of the hero
+    radiusX = heroRect.width / 2.2;
+    radiusY = heroRect.height / 2.2;
+
+    // Orbit center = middle of hero
+    const centerX = heroRect.width / 2;
+    const centerY = heroRect.height / 2;
+
+    // Elliptical orbit
+    const x = centerX + radiusX * Math.cos(angle);
+    const y = centerY + radiusY * Math.sin(angle);
+
+    // Position bee absolutely inside hero
+    bee.style.left = `${x}px`;
+    bee.style.top = `${y}px`;
+
+    angle += speed;
+
+    requestAnimationFrame(flyBee);
+}
+
+flyBee();
+
     </script>
 </body>
 </html>
