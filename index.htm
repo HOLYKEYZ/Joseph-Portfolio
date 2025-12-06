@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayanda Joseph | Software & AI Engineer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="AJ_bw.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">AJ<span>.</span></a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Nav Socials -->
+                 <div class="social-icons-nav" style="margin-left: 1rem; border-left: 1px solid var(--border-subtle); padding-left: 1rem;">
+                    <a href="https://github.com/HOLYKEYZ" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://threads.net/@josepha.mayo" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="mailto:ayandajoseph390@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                 </div>
+            </ul>
+            
+            <button class="menu-toggle" id="menuBtn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <!-- Typewriter Effect -->
+            <div class="typewriter-container">
+                <span id="typewriterText"></span><span class="cursor"></span>
+            </div>
+            
+            <h1>Engineering Safety into<br>the Digital Future.</h1>
+            <p>Building secure, intelligent architectures for a world where AI safety and human well-being come first.</p>
+            
+            <div class="cta-group">
+                <a href="#work" class="btn btn-primary">
+                    View Work <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="Joseph_Ayanda_Resume.pdf" download="Joseph_Ayanda_Resume.pdf" class="btn btn-secondary">
+                    Resume <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I am a <span class="about-highlight">Cybersecurity Student and Tech Innovator</span> driven by a singular mission: to ensure digital safety in an era of rapid AI advancement.
+                    </p>
+                    <p>
+                        Inspired by visionaries like <span class="about-highlight">Linus Torvalds</span> and <span class="about-highlight">Elon Musk</span>, I believe that true innovation isn't just about building software—it's about solving real-world problems. In a world where the dangers of unchecked AI (LLMs) often go unrecognized, I am dedicated to pioneering <span class="about-highlight">AI Safety</span> protocols and secure digital infrastructures that protect both systems and humanity.
+                    </p>
+                    <p style="font-weight: 700; color: #ffffff; font-size: 1.2rem;">
+                        My work bridges the gap between offensive cybersecurity, robust full-stack engineering, and ethical AI development.
+                    </p>
+                </div>
+                
+                <!-- Stylized Role/Mission Display -->
+                <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);"><i class="fa-solid fa-bullseye" style="color: var(--text-accent);"></i> Core Mission</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: var(--text-secondary);">
+                        <li><i class="fa-solid fa-check" style="color: var(--text-accent); margin-right: 0.5rem;"></i> Digital Safety & Online Privacy</li>
+                        <li><i class="fa-solid fa-check" style="color: var(--text-accent); margin-right: 0.5rem;"></i> AI Safety (LLMs & Human Alignment)</li>
+                        <li><i class="fa-solid fa-check" style="color: var(--text-accent); margin-right: 0.5rem;"></i> Solving Real World Problems</li>
+                        <li><i class="fa-solid fa-check" style="color: var(--text-accent); margin-right: 0.5rem;"></i> Tech Innovation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack / Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Tech Landscape</h2>
+            
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-code"></i> Frontend</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-server"></i> Backend</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                
+                <!-- Cloud & Tools -->
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-toolbox"></i> Tools & Cloud</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Google Cloud / AWS</span>
+                        <span class="skill-tag">Firebase / Supabase</span>
+                        <span class="skill-tag">Vercel / Render</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Rest APIs</span>
+                    </div>
+                </div>
+
+                <!-- Focus -->
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-crosshairs"></i> Current Goal/Focus</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">AI Safety (Alignment)</span>
+                        <span class="skill-tag">Cybersecurity</span>
+                        <span class="skill-tag">OSINT / Security</span>
+                        <span class="skill-tag">Digital Privacy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work">
+        <div class="container">
+            <h2 class="section-title">Selected Projects</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1: Kelagam -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="KELEGAM.png" alt="Kelagam Technologies" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            Kelagam Tech
+                            <i class="fa-solid fa-rocket card-icon"></i>
+                        </div>
+                        <p class="card-desc">Premium multi-page enterprise platform featuring digital showcases and modern dark/light UI design.</p>
+                        <div class="tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://kelegam-tech.vercel.app/" target="_blank" class="card-link">Live Demo <i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: Business Real Estate -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="reales.png" alt="Real Estate Platform" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            NextPhase Estate
+                            <i class="fa-solid fa-building card-icon"></i>
+                        </div>
+                        <p class="card-desc">Professional real estate platform focused on conversion optimization and seamless user experience.</p>
+                        <div class="tags">
+                            <span class="tag">JS/React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://nextphaserealestate.com" target="_blank" class="card-link">Live Demo <i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Crypto Mining -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="fyra-network.png" alt="Crypto App" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            Fyra Network
+                            <i class="fa-solid fa-coins card-icon"></i>
+                        </div>
+                        <p class="card-desc">Complex mining web app with real-time tracking, server-side events, and secure updates.</p>
+                        <div class="tags">
+                            <span class="tag">JS/React</span>
+                            <span class="tag">SSE</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://fyra-network.vercel.app" target="_blank" class="card-link">View App <i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4: Digital Footprint Shield -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="digital-footprintshield.png" alt="Security Tool" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            Footprint Shield
+                            <i class="fa-solid fa-shield-halved card-icon"></i>
+                        </div>
+                        <p class="card-desc">OSINT security tool scanning digital footprints using custom search APIs and AI integrations.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">AI</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://digital-footprint-shield.onrender.com" target="_blank" class="card-link">Use Tool <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/HOLYKEYZ/Digital-Footprint-Shield" target="_blank" class="card-link"><i class="fa-regular fa-star"></i> Star</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5: Square Farms -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="squarefarms.png" alt="Farming Platform" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            Square Farms
+                            <i class="fa-solid fa-wheat-awn card-icon"></i>
+                        </div>
+                        <p class="card-desc">Comprehensive farming platform with real-time data services and modern UI.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://squarefarms2.netlify.app/" target="_blank" class="card-link">Live Demo <i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6: E-commerce -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="ecom.png" alt="E-commerce Store" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            E-Com Store
+                            <i class="fa-solid fa-store card-icon"></i>
+                        </div>
+                        <p class="card-desc">Fullstack e-commerce solution with secure payments and inventory management.</p>
+                        <div class="tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Cloudinary</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://ecom-stor-three.vercel.app/" target="_blank" class="card-link">Shop Now <i class="fa-solid fa-cart-shopping"></i></a>
+                        </div>
+                    </div>
+                </article>
+                
+                 <!-- Project 7: Chatbot -->
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="chatbot.png" alt="AI Chatbot" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            AI Chatbot
+                            <i class="fa-solid fa-robot card-icon"></i>
+                        </div>
+                        <p class="card-desc">Intelligent conversational interface built with modern web APIs and database integration.</p>
+                        <div class="tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">WebSockets</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://my-chat-bot-ai-three.vercel.app" target="_blank" class="card-link">Chat Now <i class="fa-solid fa-comment-dots"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer / Contact Shortcut -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem; font-size: 2rem;">Let's Build Something Safe & Great</h2>
+            <div class="social-links">
+                <a href="https://github.com/HOLYKEYZ" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://threads.net/@josepha.mayo" target="_blank" class="social-link" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                <a href="mailto:ayandajoseph390@gmail.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+2349019029665" class="social-link" title="Phone"><i class="fa-solid fa-phone"></i></a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                &copy; 2025 Ayanda Joseph. Dedicated to Digital Safety & Innovation.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Typewriter Effect
+        const titles = ["Fullstack Dev", "Cybersec Student", "AI Engineer"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+        
+        (function type() {
+            if (count === titles.length) {
+                count = 0;
+            }
+            currentText = titles[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById('typewriterText').textContent = letter;
+            
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Pause before next
+            } else {
+                setTimeout(type, 100);
+            }
+        }());
+    </script>
+</body>
+</html>
