@@ -507,12 +507,26 @@ section { padding: 6rem 0; }
     overflow: hidden;
     border: 1px solid var(--border-subtle);
     z-index: 1;
-    
-    /* Image Background */
+    background: var(--bg-card); /* Fallback */
+}
+
+/* Background Image (B&W High Contrast) via ::after */
+.mission-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image: url('joseph.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: -2;
+    /* subtle blue tint: sepia makes it monochrome, hue-rotate shifts to blue, saturate controls intensity */
+    filter: contrast(1.2) sepia(1) hue-rotate(200deg) saturate(0.3);
+    transition: transform 0.6s ease;
+}
+
+.mission-card:hover::after {
+    transform: scale(1.05); /* Subtle zoom on hover */
 }
 
 /* Dark Overlay for Text Readability */
@@ -527,7 +541,7 @@ section { padding: 6rem 0; }
 
 /* Hover: Reveal Image */
 .mission-card:hover::before {
-    background: rgba(5, 5, 5, 0.2); /* Lighten overlay significantly */
+    background: rgba(5, 5, 5, 0.2);
 }
 
 /* Content Container */
