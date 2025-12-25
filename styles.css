@@ -515,7 +515,7 @@ section { padding: 6rem 0; }
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('joseph.jpg');
+    background-image: url('joseph.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
