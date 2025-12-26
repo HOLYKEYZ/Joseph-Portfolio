@@ -495,6 +495,7 @@ section { padding: 6rem 0; }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Mission Card with Interactive Background */
+/* Mission Card with Interactive Background */
 .mission-card {
     position: relative;
     border-radius: 16px;
@@ -510,18 +511,17 @@ section { padding: 6rem 0; }
     background: var(--bg-card); /* Fallback */
 }
 
-/* Background Image (B&W High Contrast) via ::after */
+/* Background Image - Natural Color */
 .mission-card::after {
     content: '';
     position: absolute;
     inset: 0;
     background-image: url('joseph.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center 20%; /* Shifted up to show more of head */
     background-repeat: no-repeat;
     z-index: -2;
-    /* subtle blue tint: sepia makes it monochrome, hue-rotate shifts to blue, saturate controls intensity */
-    filter: contrast(1.2) sepia(1) hue-rotate(200deg) saturate(0.3);
+    filter: brightness(0.9) contrast(1.1);
     transition: transform 0.6s ease;
 }
 
