@@ -504,7 +504,7 @@ section { padding: 6rem 0; }
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    min-height: 350px;
+    min-height: 420px; /* taller card to show more of the portrait */
     overflow: hidden;
     border: 1px solid var(--border-subtle);
     z-index: 1;
@@ -517,11 +517,12 @@ section { padding: 6rem 0; }
     position: absolute;
     inset: 0;
     background-image: url('joseph.jpeg');
-    background-size: cover;
-    background-position: center 20%; /* Shifted up to show more of head */
+    background-size: 80% auto; /* make image smaller so head + some torso are visible */
+    background-position: center 30%; /* vertical framing for a professional crop */
     background-repeat: no-repeat;
     z-index: -2;
     filter: brightness(0.9) contrast(1.1);
+    transform: scale(1);
     transition: transform 0.6s ease;
 }
 
