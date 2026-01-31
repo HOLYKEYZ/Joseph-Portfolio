@@ -402,6 +402,12 @@ section { padding: 6rem 0; }
     background: rgba(255,255,255,0.08);
 }
 
+.tag-archived {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
 /* Card Actions */
 .card-actions {
     display: flex;
