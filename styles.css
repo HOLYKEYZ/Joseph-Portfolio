@@ -236,7 +236,7 @@ section { padding: 6rem 0; }
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
 }
 
@@ -523,7 +523,7 @@ section { padding: 6rem 0; }
     position: absolute;
     inset: 0;
     background-image: url('joseph.jpeg');
-    background-size: 80% auto; /* make image smaller so head + some torso are visible */
+    background-size: cover; /* fill the entire card width and height */
     background-position: center 30%; /* vertical framing for a professional crop */
     background-repeat: no-repeat;
     z-index: -2;
