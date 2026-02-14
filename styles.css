@@ -326,6 +326,16 @@ section { padding: 6rem 0; }
     z-index: 10;
 }
 
+.card-wide {
+    grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+    .card-wide {
+        grid-column: span 1;
+    }
+}
+
 /* Image Area - Cropping Logic */
 .card-image-wrapper {
     height: 220px;
@@ -343,6 +353,17 @@ section { padding: 6rem 0; }
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: brightness(0.95);
     background-color: var(--bg-card); /* Seamless background for aspect ratio gaps */
+}
+
+.card-wide .card-image-wrapper {
+    height: 300px;
+    display: flex;
+    gap: 1px;
+    background: var(--border-subtle);
+}
+
+.card-wide .card-image {
+    width: 50%;
 }
 
 .card:hover .card-image {
