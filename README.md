@@ -18,6 +18,6 @@ To view the portfolio locally, follow these steps:
 
 ## Contact
 For more information, collaboration, or to discuss potential opportunities, please feel free to reach out through the following channels:
-- GitHub: [Your GitHub Profile](https://github.com/yourgithubprofile)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourlinkedinprofile/)
-- Email: [your.email@example.com](mailto:your.email@example.com)
+- GitHub: [Joseph's GitHub Profile](https://github.com/josephsgithubprofile)
+- LinkedIn: [Joseph's LinkedIn Profile](https://www.linkedin.com/in/josephslinkedinprofile/)
+- Email: [joseph@example.com](mailto:joseph@example.com)
