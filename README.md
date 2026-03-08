@@ -1,6 +1,6 @@
-# Joseph's Professional Portfolio
+# my portfolio
 ## Introduction
-This portfolio showcases my professional profile, skills, and projects.
+this portfolio showcases my professional profile, skills, and projects.
 ## Technologies Used
 - HTML5
 - CSS3
@@ -18,6 +18,5 @@ To view the portfolio locally, follow these steps:
 
 ## Contact
 For more information, collaboration, or to discuss potential opportunities, please feel free to reach out through the following channels:
-- GitHub: [Your GitHub Profile](https://github.com/yourgithubprofile)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourlinkedinprofile/)
-- Email: [your.email@example.com](mailto:your.email@example.com)
+- GitHub: https://github.com/HOLYKEYZ
+- Email: ayandajoseph390@gmail.com
