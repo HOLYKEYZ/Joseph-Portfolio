@@ -223,7 +223,7 @@ nav {
 }
 
 /* Sections */
-section { padding: 6rem 0; }
+section { padding: 4rem 0; }
 
 .section-title {
     font-size: 2.5rem;
@@ -304,8 +304,14 @@ section { padding: 6rem 0; }
 /* Projects Grid - Advanced Cards */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .card {
