@@ -20,3 +20,7 @@ To view the portfolio locally, follow these steps:
 For more information, collaboration, or to discuss potential opportunities, please feel free to reach out through the following channels:
 - GitHub: https://github.com/HOLYKEYZ
 - Email: ayandajoseph390@gmail.com
+
+## Additional Utilities and Assets
+### AI Pipeline Flowchart Generation
+The `generate_flowchart.py` script is a utility used to create the `mayo_flowchart.png` image, which serves as a conceptual diagram visualizing the Mayo Triple-AI Pipeline, an AI workflow involving SCANNER, EXECUTOR, and REVIEWER roles. This image is included as a supplementary asset within the repository.
