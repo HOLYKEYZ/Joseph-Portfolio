@@ -5,12 +5,17 @@ width, height = 800, 600
 img = Image.new('RGB', (width, height), color='#0a0a0a')
 draw = ImageDraw.Draw(img)
 
-try:
-    font_title = ImageFont.truetype("arial.ttf", 18)
-    font_text = ImageFont.truetype("arial.ttf", 12)
-except:
-    font_title = ImageFont.load_default()
-    font_text = ImageFont.load_default()
+# Attempt to load common sans-serif fonts for cross-platform compatibility
+preferred_fonts = ["Arial.ttf", "Helvetica.ttf", "DejaVuSans.ttf", "LiberationSans-Regular.ttf"]
+font_title = ImageFont.load_default()
+font_text = ImageFont.load_default()
+for font_name in preferred_fonts:
+    try:
+        font_title = ImageFont.truetype(font_name, 18)
+        font_text = ImageFont.truetype(font_name, 12)
+        break
+    except:
+        pass
 
 def draw_box(draw, x, y, w, h, text, bg='#1a1a1a', border='#3b82f6'):
     draw.rectangle([x, y, x+w, y+h], fill=bg, outline=border, width=2)
