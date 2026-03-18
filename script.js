@@ -36,11 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            nav.style.background = 'rgba(10, 10, 10, 0.95)';
-            nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            nav.classList.add('scrolled');
         } else {
-            nav.style.background = 'rgba(10, 10, 10, 0.8)';
-            nav.style.boxShadow = 'none';
+            nav.classList.remove('scrolled');
         }
     });
 
