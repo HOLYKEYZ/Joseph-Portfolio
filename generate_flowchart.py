@@ -1,3 +1,4 @@
+import math
 from PIL import Image, ImageDraw, ImageFont
 import os
 
@@ -25,7 +26,17 @@ def draw_box(draw, x, y, w, h, text, bg='#1a1a1a', border='#3b82f6'):
 
 def draw_arrow(draw, x1, y1, x2, y2):
     draw.line([x1, y1, x2, y2], fill='#64ffda', width=2)
-    draw.polygon([(x2, y2), (x2-5, y2-10), (x2+5, y2-10)], fill='#64ffda')
+    dy = y2 - y1
+    dx = x2 - x1
+    angle = math.atan2(dy, dx)
+    arrowhead_length = 10
+    arrowhead_width = 5
+    tip_x, tip_y = x2, y2
+    base1_x = tip_x - arrowhead_length * math.cos(angle - math.pi/6)
+    base1_y = tip_y - arrowhead_length * math.sin(angle - math.pi/6)
+    base2_x = tip_x - arrowhead_length * math.cos(angle + math.pi/6)
+    base2_y = tip_y - arrowhead_length * math.sin(angle + math.pi/6)
+    draw.polygon([(tip_x, tip_y), (base1_x, base1_y), (base2_x, base2_y)], fill='#64ffda')
 
 title = "Mayo Triple-AI Pipeline"
 tw = draw.textlength(title, font=font_title)
