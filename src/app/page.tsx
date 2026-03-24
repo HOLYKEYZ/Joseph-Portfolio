@@ -97,7 +97,7 @@ function ProjectCard({
         <img 
           src={image} 
           alt={title} 
-          className="img-zoom w-full h-full object-cover object-center bg-card brightness-95"
+          className="img-zoom w-full h-full object-contain object-center bg-card brightness-95"
         />
       </div>
       <div className="p-6 flex flex-col flex-1">
@@ -263,7 +263,7 @@ export default function Home() {
         <div className="container mx-auto px-8 max-w-[800px] text-center z-10">
           <Typewriter />
           
-          <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1">
+          <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
             engineering safety into<br />the digital future.
           </h1>
           
