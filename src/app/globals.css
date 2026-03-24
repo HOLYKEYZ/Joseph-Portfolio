@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap');
-
 @theme {
   --color-background: #0a0a0a;
   --color-foreground: #ffffff;
@@ -11,26 +9,15 @@
   --color-accent: #3b82f6;
   --color-border-subtle: #262626;
   --color-border-highlight: #404040;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
   background-color: #0a0a0a;
   color: #ffffff;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 .cursor-blink {
@@ -59,17 +46,17 @@ body {
 }
 
 .card-hover:hover {
-  transform: translateY(-8px) scale(1.01);
+  transform: translateY(-8px);
   border-color: #404040;
   box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
 }
 
 .img-zoom {
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
+  transition: transform 0.6s ease, filter 0.6s;
 }
 
 .card-hover:hover .img-zoom {
-  transform: scale(1.1);
+  transform: scale(1.05);
   filter: brightness(1);
 }
 
@@ -78,9 +65,9 @@ body {
 }
 
 .card-hover:hover .skill-tag-hover {
-  background: rgba(255,255,255,0.1);
-  border-color: #262626;
-  color: #ffffff;
+  background: rgba(255,255,255,0.1) !important;
+  border-color: #262626 !important;
+  color: #ffffff !important;
 }
 
 .mission-card {
@@ -101,7 +88,7 @@ body {
 }
 
 .mission-card:hover .mission-card-overlay {
-  background: rgba(5, 5, 5, 0.2);
+  background: rgba(5, 5, 5, 0.2) !important;
 }
 
 .mission-card-content {
@@ -113,6 +100,6 @@ body {
 }
 
 .nav-glass {
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
 }
