@@ -275,9 +275,6 @@ export default function Home() {
             <a href="#work" className="px-6 py-3 rounded-lg font-semibold bg-white text-background hover:bg-gray-100 transition-all flex items-center gap-2 no-underline">
               view work <i className="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="/Ayanda_Joseph_Senior_Resume.pdf" download className="px-6 py-3 rounded-lg font-semibold bg-card/60 border border-white/20 text-white backdrop-blur hover:border-white transition-all flex items-center gap-2 no-underline">
-              resume <i className="fa-solid fa-download"></i>
-            </a>
           </div>
         </div>
       </header>

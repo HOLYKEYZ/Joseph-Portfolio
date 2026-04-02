@@ -42,16 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Hover effect for Resume Button (Feedback)
-    const resumeBtn = document.querySelector('a[download]');
-    if (resumeBtn) {
-        resumeBtn.addEventListener('mouseenter', () => {
-            const icon = resumeBtn.querySelector('i');
-            if(icon) icon.classList.add('fa-bounce');
-        });
-        resumeBtn.addEventListener('mouseleave', () => {
-            const icon = resumeBtn.querySelector('i');
-            if(icon) icon.classList.remove('fa-bounce');
-        });
-    }
+
 });
