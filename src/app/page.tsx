@@ -12,7 +12,7 @@ function Typewriter() {
 
   useEffect(() => {
     const currentTitle = titles[titleIndex];
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         if (charIndex < currentTitle.length) {
@@ -76,27 +76,27 @@ function SkillCard({ icon, title, children }: { icon: string; title: string; chi
 }
 
 // Project Card component
-function ProjectCard({ 
-  image, 
-  title, 
-  icon, 
-  description, 
-  tags, 
-  links 
-}: { 
-  image: string; 
-  title: string; 
-  icon: string; 
-  description: string; 
+function ProjectCard({
+  image,
+  title,
+  icon,
+  description,
+  tags,
+  links
+}: {
+  image: string;
+  title: string;
+  icon: string;
+  description: string;
   tags: string[];
   links: { href: string; label: string; icon: string }[];
 }) {
   return (
     <article className="card-hover bg-card border border-border-subtle rounded-2xl overflow-hidden flex flex-col">
       <div className="h-[220px] relative overflow-hidden border-b border-border-subtle">
-        <img 
-          src={image} 
-          alt={title} 
+        <img
+          src={image}
+          alt={title}
           className="img-zoom w-full h-full object-contain object-center bg-card brightness-95"
         />
       </div>
@@ -111,10 +111,10 @@ function ProjectCard({
         </div>
         <div className="flex gap-4 pt-4 border-t border-border-subtle">
           {links.map((link, i) => (
-            <a 
+            <a
               key={i}
-              href={link.href} 
-              target="_blank" 
+              href={link.href}
+              target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-text-primary hover:text-accent flex items-center gap-1.5 transition-colors"
             >
@@ -223,7 +223,7 @@ export default function Home() {
           <a href="#" className="font-display text-2xl font-bold text-text-primary">
             AJ<span className="text-accent">.</span>
           </a>
-          
+
           <ul className="hidden md:flex items-center gap-8 list-none">
             <li><a href="#about" className="text-text-secondary hover:text-text-primary text-[15px] font-medium transition-colors">about</a></li>
             <li><a href="#skills" className="text-text-secondary hover:text-text-primary text-[15px] font-medium transition-colors">tech stack</a></li>
@@ -262,15 +262,15 @@ export default function Home() {
       >
         <div className="container mx-auto px-8 max-w-[800px] text-center z-10">
           <Typewriter />
-          
+
           <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
             engineering safety into<br />the digital future.
           </h1>
-          
+
           <p className="text-xl text-gray-300 max-w-[600px] mx-auto mb-10 animate-slide-up animate-slide-up-delay-2">
             building secure, intelligent architectures for a world where AI safety and human well-being come first.
           </p>
-          
+
           <div className="flex gap-4 justify-center animate-slide-up animate-slide-up-delay-3">
             <a href="#work" className="px-6 py-3 rounded-lg font-semibold bg-white text-background hover:bg-gray-100 transition-all flex items-center gap-2 no-underline">
               view work <i className="fa-solid fa-arrow-right"></i>
@@ -283,7 +283,7 @@ export default function Home() {
       <section id="about" className="py-24">
         <div className="container mx-auto px-8">
           <h2 className="text-4xl mb-16 text-center font-display">about me</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="mb-6 text-text-secondary text-lg">
@@ -296,9 +296,9 @@ export default function Home() {
                 my work bridges the gap between AI safety and full stack development.
               </p>
             </div>
-            
+
             <div className="mission-card rounded-2xl p-8 min-h-[350px] border border-border-subtle relative overflow-hidden bg-card">
-              <div className="absolute inset-0 bg-cover bg-center mission-card-bg" style={{ backgroundImage: 'url(/joseph.jpeg)', filter: 'brightness(0.9) contrast(1.1)' }} />
+              <div className="absolute inset-0 bg-cover bg-center mission-card-bg" style={{ backgroundImage: 'url(/joseph.jpg)', filter: 'brightness(0.9) contrast(1.1)' }} />
               <div className="absolute inset-0 bg-black/85 mission-card-overlay" />
               <div className="relative z-10 mission-card-content">
                 <h3 className="mb-6 text-text-primary text-xl">
@@ -320,7 +320,7 @@ export default function Home() {
       <section id="skills" className="py-24">
         <div className="container mx-auto px-8">
           <h2 className="text-4xl mb-16 text-center font-display">tech arsenal</h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <SkillCard icon="fa-solid fa-microchip" title="systems & core">
               <SkillTag>C</SkillTag>
@@ -372,17 +372,17 @@ export default function Home() {
       <section id="work" className="py-24">
         <div className="container mx-auto px-8">
           <h2 className="text-4xl mb-16 text-center font-display">selected projects</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-10">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}
           </div>
-          
+
           <div className="flex justify-center mt-12 mb-4">
-            <a 
-              href="https://github.com/HOLYKEYZ?tab=repositories" 
-              target="_blank" 
+            <a
+              href="https://github.com/HOLYKEYZ?tab=repositories"
+              target="_blank"
               className="w-full max-w-[250px] p-4 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-[#333] rounded-xl flex items-center justify-center gap-3 transition-all no-underline hover:border-[#555]"
             >
               <i className="fa-brands fa-github text-white text-lg"></i>
