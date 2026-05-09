@@ -24,7 +24,9 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
-        <link rel="icon" type="image/png" href="/AJ_bw.png" />
+        <link rel="icon" type="image/png" href="/joseph.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0a0a0a" />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         {children}
