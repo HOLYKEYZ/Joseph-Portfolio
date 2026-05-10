@@ -196,7 +196,7 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+        🤗 View on HuggingFace
       </a>
     </div>
   );
@@ -339,8 +339,8 @@ export default function Home() {
               <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
-                <i className="fa-solid fa-face-smile"></i>
+              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
+                🤗
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-x-twitter"></i>
@@ -556,8 +556,8 @@ export default function Home() {
             <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-github"></i>
             </a>
-            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
-              <i className="fa-solid fa-face-smile"></i>
+            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1" title="HuggingFace">
+              🤗
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-x-twitter"></i>
