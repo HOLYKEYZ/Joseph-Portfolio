@@ -127,6 +127,81 @@ function ProjectCard({
   );
 }
 
+// Model/Dataset Card component
+function ModelCard({ 
+  name, 
+  type, 
+  description, 
+  hfUrl 
+}: { 
+  name: string; 
+  type: 'model' | 'dataset'; 
+  description: string; 
+  hfUrl: string;
+}) {
+  const [downloads, setDownloads] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDownloads = async () => {
+      try {
+        // Extract repo path from URL (e.g., "josephmayo/Qwopus-9B-Unfettered")
+        const repoPath = hfUrl.split('huggingface.co/')[1];
+        const apiUrl = `https://huggingface.co/api/${type}s/${repoPath}`;
+        
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        
+        setDownloads(data.downloads || 0);
+      } catch (error) {
+        console.error('Error fetching downloads:', error);
+        setDownloads(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDownloads();
+  }, [hfUrl, type]);
+
+  const formatDownloads = (num: number) => {
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(2)}k+`;
+    }
+    return `${num}+`;
+  };
+
+  return (
+    <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-3">
+          <i className={`fa-solid ${type === 'model' ? 'fa-brain' : 'fa-database'} text-accent text-xl`}></i>
+          <h3 className="text-lg font-bold text-text-primary">{name}</h3>
+        </div>
+        {!loading && downloads !== null && (
+          <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">
+            {formatDownloads(downloads)} downloads
+          </span>
+        )}
+        {loading && (
+          <span className="text-xs px-2 py-1 bg-white/5 text-text-secondary rounded animate-pulse">
+            loading...
+          </span>
+        )}
+      </div>
+      <p className="text-sm text-text-secondary mb-4">{description}</p>
+      <a 
+        href={hfUrl} 
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+      >
+        <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+      </a>
+    </div>
+  );
+}
+
 export default function Home() {
   const projects = [
     {
@@ -442,89 +517,33 @@ export default function Home() {
           <h2 className="text-4xl mb-16 text-center font-display">models & datasets</h2>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {/* Qwopus 9B Unfettered */}
-            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-brain text-accent text-xl"></i>
-                  <h3 className="text-lg font-bold text-text-primary">Qwopus 9B Unfettered</h3>
-                </div>
-                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">2k+ downloads</span>
-              </div>
-              <p className="text-sm text-text-secondary mb-4">
-                Uncensored 9B parameter language model. Directional ablation applied to remove refusal mechanisms while maintaining capabilities.
-              </p>
-              <a 
-                href="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered" 
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
-              >
-                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
-              </a>
-            </div>
+            <ModelCard
+              name="Qwopus 9B Unfettered"
+              type="model"
+              description="Uncensored 9B parameter language model. Directional ablation applied to remove refusal mechanisms while maintaining capabilities."
+              hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered"
+            />
 
-            {/* Qwopus 9B Unfettered GGUF */}
-            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-brain text-accent text-xl"></i>
-                  <h3 className="text-lg font-bold text-text-primary">Qwopus 9B Unfettered GGUF</h3>
-                </div>
-                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">3.16k+ downloads</span>
-              </div>
-              <p className="text-sm text-text-secondary mb-4">
-                Quantized GGUF version of Qwopus 9B Unfettered for efficient local inference with llama.cpp and Ollama.
-              </p>
-              <a 
-                href="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF" 
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
-              >
-                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
-              </a>
-            </div>
+            <ModelCard
+              name="Qwopus 9B Unfettered GGUF"
+              type="model"
+              description="Quantized GGUF version of Qwopus 9B Unfettered for efficient local inference with llama.cpp and Ollama."
+              hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF"
+            />
 
-            {/* Qwen2.5 0.5B Unfettered */}
-            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-brain text-accent text-xl"></i>
-                  <h3 className="text-lg font-bold text-text-primary">Qwen2.5 0.5B Unfettered</h3>
-                </div>
-                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">411+ downloads</span>
-              </div>
-              <p className="text-sm text-text-secondary mb-4">
-                Lightweight 0.5B parameter uncensored model based on Qwen2.5. Optimized for edge deployment and resource-constrained environments.
-              </p>
-              <a 
-                href="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered" 
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
-              >
-                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
-              </a>
-            </div>
+            <ModelCard
+              name="Qwen2.5 0.5B Unfettered"
+              type="model"
+              description="Lightweight 0.5B parameter uncensored model based on Qwen2.5. Optimized for edge deployment and resource-constrained environments."
+              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered"
+            />
 
-            {/* Refusal Compliance Pairs Dataset */}
-            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-database text-accent text-xl"></i>
-                  <h3 className="text-lg font-bold text-text-primary">Refusal Compliance Pairs</h3>
-                </div>
-                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">168+ downloads</span>
-              </div>
-              <p className="text-sm text-text-secondary mb-4">
-                Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.
-              </p>
-              <a 
-                href="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs" 
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
-              >
-                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
-              </a>
-            </div>
+            <ModelCard
+              name="Refusal Compliance Pairs"
+              type="dataset"
+              description="Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation."
+              hfUrl="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs"
+            />
           </div>
         </div>
       </section>
