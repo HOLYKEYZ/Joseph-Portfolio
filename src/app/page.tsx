@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 // Typewriter component
 function Typewriter() {
-  const titles = ["fullstack dev", "AI safety researcher", "agentic engineer"];
+  const titles = ["AI engineer", "fullstack developer", "ML researcher"];
   const [displayText, setDisplayText] = useState("");
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -130,9 +130,60 @@ function ProjectCard({
 export default function Home() {
   const projects = [
     {
+      image: "/qwopus_unfetter.png",
+      title: "Qwopus 9B Unfettered",
+      icon: "fa-solid fa-brain",
+      description: "Uncensored 9B parameter language model with 2k+ downloads on HuggingFace. Directional ablation applied to remove refusal mechanisms while maintaining capabilities.",
+      tags: ["PyTorch", "transformers", "model training"],
+      links: [
+        { href: "https://huggingface.co/josephmayo/Qwopus-9B-Unfettered", label: "hugging face", icon: "fa-solid fa-face-smile" }
+      ]
+    },
+    {
+      image: "/refusal_dataset.png",
+      title: "Refusal Compliance Pairs",
+      icon: "fa-solid fa-database",
+      description: "Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.",
+      tags: ["dataset", "AI safety", "research"],
+      links: [
+        { href: "https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs", label: "hugging face", icon: "fa-solid fa-face-smile" }
+      ]
+    },
+    {
+      image: "/gitpulse.png",
+      title: "GitPulse",
+      icon: "fa-solid fa-code-branch",
+      description: "Developer-first social platform built on GitHub. Share updates, ship releases, discover trending projects with real-time SSE feeds and GitHub Actions integration.",
+      tags: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
+      links: [
+        { href: "https://gitpulsefeed.vercel.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
+        { href: "https://github.com/HOLYKEYZ/git-pulse", label: "source", icon: "fa-brands fa-github" }
+      ]
+    },
+    {
+      image: "/unfetter_proxy.png",
+      title: "Unfetter Proxy",
+      icon: "fa-solid fa-shield-halved",
+      description: "Universal reverse proxy for persistent closed-model unfettering. Intercepts API calls to apply token suppression, system injection, and automated jailbreak loops (PARE).",
+      tags: ["Python", "FastAPI", "red teaming"],
+      links: [
+        { href: "https://github.com/HOLYKEYZ/unfetter_proxy", label: "source", icon: "fa-brands fa-github" }
+      ]
+    },
+    {
+      image: "/swarms.png",
+      title: "Swarms",
+      icon: "fa-solid fa-network-wired",
+      description: "Multi-agent orchestration framework for coordinating autonomous AI agents. Built for scalable, production-ready agentic systems.",
+      tags: ["Python", "agentic AI", "orchestration"],
+      links: [
+        { href: "https://github.com/HOLYKEYZ/Swarms", label: "source", icon: "fa-brands fa-github" }
+      ]
+    },
+    {
       image: "/intellectsafe.png",
       title: "IntellectSafe",
-      icon: "fa-solid fa-brain",
+      icon: "fa-solid fa-lock",
       description: "AI safety engine with multi-model LLM Council, Universal Proxy for frontier models, deepfake detection, and adversarial defense suite.",
       tags: ["fastAPI", "next.js", "AI Safety"],
       links: [
@@ -233,6 +284,9 @@ export default function Home() {
               <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-github"></i>
               </a>
+              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
+                <i className="fa-solid fa-face-smile"></i>
+              </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-x-twitter"></i>
               </a>
@@ -264,11 +318,11 @@ export default function Home() {
           <Typewriter />
 
           <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-            engineering safety into<br />the digital future.
+            building impactful AI<br />for the future.
           </h1>
 
           <p className="text-xl text-gray-300 max-w-[600px] mx-auto mb-10 animate-slide-up animate-slide-up-delay-2">
-            building secure, intelligent architectures for a world where AI safety and human well-being come first.
+            crafting intelligent systems and innovative software that drive real-world impact and push the boundaries of what&apos;s possible.
           </p>
 
           <div className="flex gap-4 justify-center animate-slide-up animate-slide-up-delay-3">
@@ -287,28 +341,28 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="mb-6 text-text-secondary text-lg">
-                i am an <span className="text-text-primary font-medium">agentic Engineer and tech Innovator</span> driven by a singular mission: ensuring digital safety in an era of rapid AI advancement and building cool softwares.
+                i am an <span className="text-text-primary font-medium">AI engineer and fullstack developer</span> driven by a singular mission: building impactful software that pushes the boundaries of innovation and solves real-world problems.
               </p>
               <p className="mb-6 text-text-secondary text-lg">
-                inspired by visionaries like <span className="text-text-primary font-medium">linus torvalds</span>, i believe that true innovation isn&apos;t just about building software—it&apos;s about solving real-world problems. in a world where the dangers of unchecked AI (LLMs) often go unrecognized, i am dedicated to pioneering <span className="text-text-primary font-medium">ai safety & red teaming</span> protocols and secure digital infrastructures that protect both systems and humanity.
+                from training and fine-tuning language models to architecting full-stack applications, i specialize in <span className="text-text-primary font-medium">machine learning engineering, AI safety research, and agentic systems</span>. my work spans model development, red teaming protocols, and building intelligent infrastructures that drive meaningful impact.
               </p>
               <p className="font-bold text-white text-xl">
-                my work bridges the gap between AI safety and full stack development.
+                my work bridges cutting-edge ML research with production-ready software engineering.
               </p>
             </div>
 
             <div className="mission-card rounded-2xl p-8 min-h-[520px] border border-border-subtle relative overflow-hidden bg-card">
-              <div className="absolute inset-0 bg-cover bg-no-repeat bg-top mission-card-bg" style={{ backgroundImage: 'url(/joseph.jpeg)', filter: 'brightness(0.9) contrast(1.1)' }} />
+              <div className="absolute inset-0 bg-cover bg-no-repeat bg-center mission-card-bg" style={{ backgroundImage: 'url(/joseph.jpeg)', filter: 'brightness(0.9) contrast(1.1)', backgroundPosition: 'center 20%' }} />
               <div className="absolute inset-0 bg-black/50 mission-card-overlay" />
               <div className="relative z-10 mission-card-content">
                 <h3 className="mb-6 text-text-primary text-xl">
                   <i className="fa-solid fa-bullseye text-accent mr-2"></i> core mission
                 </h3>
                 <ul className="list-none flex flex-col gap-4 text-text-secondary">
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> agentic engineering</li>
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> ai safety & red teaming</li>
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> solving real world problems</li>
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> tech innovation</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> impactful AI innovation</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> ML engineering & research</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> agentic systems</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> fullstack development</li>
                 </ul>
               </div>
             </div>
@@ -359,9 +413,18 @@ export default function Home() {
               <SkillTag>docker</SkillTag>
             </SkillCard>
 
+            <SkillCard icon="fa-solid fa-brain" title="ML & deep learning">
+              <SkillTag>PyTorch</SkillTag>
+              <SkillTag>transformers</SkillTag>
+              <SkillTag>hugging face</SkillTag>
+              <SkillTag>model training</SkillTag>
+              <SkillTag>fine-tuning</SkillTag>
+            </SkillCard>
+
             <SkillCard icon="fa-solid fa-crosshairs" title="current focus">
-              <SkillTag>ai safety & red teaming</SkillTag>
-              <SkillTag>agentic engineering</SkillTag>
+              <SkillTag>ML engineering</SkillTag>
+              <SkillTag>ai safety research</SkillTag>
+              <SkillTag>agentic systems</SkillTag>
               <SkillTag>fullstack dev</SkillTag>
             </SkillCard>
           </div>
@@ -396,10 +459,13 @@ export default function Home() {
       {/* Footer */}
       <footer id="contact" className="bg-card border-t border-border-subtle py-16 text-center">
         <div className="container mx-auto px-8">
-          <h2 className="mb-8 text-3xl">let&apos;s build something safe & great</h2>
+          <h2 className="mb-8 text-3xl">let&apos;s build something impactful & innovative</h2>
           <div className="flex justify-center gap-8 mb-8">
             <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-github"></i>
+            </a>
+            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
+              <i className="fa-solid fa-face-smile"></i>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-x-twitter"></i>
@@ -412,7 +478,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-text-secondary text-sm">
-            &copy; 2026 ayanda joseph. dedicated to digital safety & innovation.
+            &copy; 2026 ayanda joseph. building impactful AI & innovative software.
           </p>
         </div>
       </footer>
