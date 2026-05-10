@@ -140,7 +140,7 @@ export default function Home() {
       ]
     },
     {
-      image: "/refusal_dataset.png",
+      image: "/refusal_dataset.jpg",
       title: "Refusal Compliance Pairs",
       icon: "fa-solid fa-database",
       description: "Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.",
@@ -161,7 +161,7 @@ export default function Home() {
       ]
     },
     {
-      image: "/unfetter_proxy.png",
+      image: "/unfetter_proxy.jpg",
       title: "Unfetter Proxy",
       icon: "fa-solid fa-shield-halved",
       description: "Universal reverse proxy for persistent closed-model unfettering. Intercepts API calls to apply token suppression, system injection, and automated jailbreak loops (PARE).",
@@ -171,7 +171,7 @@ export default function Home() {
       ]
     },
     {
-      image: "/swarms.png",
+      image: "/swarms.jpg",
       title: "Swarms",
       icon: "fa-solid fa-network-wired",
       description: "Multi-agent orchestration framework for coordinating autonomous AI agents. Built for scalable, production-ready agentic systems.",
