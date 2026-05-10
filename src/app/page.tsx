@@ -140,7 +140,7 @@ export default function Home() {
       ]
     },
     {
-      image: "/refusal_dataset.jpg",
+      image: "/refusal_dataset.png",
       title: "Refusal Compliance Pairs",
       icon: "fa-solid fa-database",
       description: "Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.",
