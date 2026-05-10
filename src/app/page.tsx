@@ -130,26 +130,6 @@ function ProjectCard({
 export default function Home() {
   const projects = [
     {
-      image: "/qwopus_unfetter.png",
-      title: "Qwopus 9B Unfettered",
-      icon: "fa-solid fa-brain",
-      description: "Uncensored 9B parameter language model with 2k+ downloads on HuggingFace. Directional ablation applied to remove refusal mechanisms while maintaining capabilities.",
-      tags: ["PyTorch", "transformers", "model training"],
-      links: [
-        { href: "https://huggingface.co/josephmayo/Qwopus-9B-Unfettered", label: "hugging face", icon: "fa-solid fa-face-smile" }
-      ]
-    },
-    {
-      image: "/refusal_dataset.png",
-      title: "Refusal Compliance Pairs",
-      icon: "fa-solid fa-database",
-      description: "Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.",
-      tags: ["dataset", "AI safety", "research"],
-      links: [
-        { href: "https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs", label: "hugging face", icon: "fa-solid fa-face-smile" }
-      ]
-    },
-    {
       image: "/gitpulse.png",
       title: "GitPulse",
       icon: "fa-solid fa-code-branch",
@@ -161,7 +141,7 @@ export default function Home() {
       ]
     },
     {
-      image: "/unfetter_proxy.jpg",
+      image: "/unfetter_proxy.png",
       title: "Unfetter Proxy",
       icon: "fa-solid fa-shield-halved",
       description: "Universal reverse proxy for persistent closed-model unfettering. Intercepts API calls to apply token suppression, system injection, and automated jailbreak loops (PARE).",
@@ -171,11 +151,11 @@ export default function Home() {
       ]
     },
     {
-      image: "/swarms.jpg",
-      title: "Swarms",
+      image: "/swarms.png",
+      title: "SWARMs Debate Primitive",
       icon: "fa-solid fa-network-wired",
-      description: "Multi-agent orchestration framework for coordinating autonomous AI agents. Built for scalable, production-ready agentic systems.",
-      tags: ["Python", "agentic AI", "orchestration"],
+      description: "Multi-agent debate and vote coordination system on Solana blockchain. Agents assume distinct personas to debate complex questions, with full session transcripts hashed and recorded on-chain for verifiable AI consensus.",
+      tags: ["Python", "Solana", "multi-agent", "blockchain"],
       links: [
         { href: "https://github.com/HOLYKEYZ/Swarms", label: "source", icon: "fa-brands fa-github" }
       ]
@@ -452,6 +432,99 @@ export default function Home() {
               <span className="text-[#ccc] font-display text-[15px] font-medium">View All Projects</span>
               <i className="fa-solid fa-arrow-right text-accent text-sm"></i>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Models & Datasets Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-8">
+          <h2 className="text-4xl mb-16 text-center font-display">models & datasets</h2>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* Qwopus 9B Unfettered */}
+            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-brain text-accent text-xl"></i>
+                  <h3 className="text-lg font-bold text-text-primary">Qwopus 9B Unfettered</h3>
+                </div>
+                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">2k+ downloads</span>
+              </div>
+              <p className="text-sm text-text-secondary mb-4">
+                Uncensored 9B parameter language model. Directional ablation applied to remove refusal mechanisms while maintaining capabilities.
+              </p>
+              <a 
+                href="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered" 
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+              >
+                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+              </a>
+            </div>
+
+            {/* Qwopus 9B Unfettered GGUF */}
+            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-brain text-accent text-xl"></i>
+                  <h3 className="text-lg font-bold text-text-primary">Qwopus 9B Unfettered GGUF</h3>
+                </div>
+                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">3.16k+ downloads</span>
+              </div>
+              <p className="text-sm text-text-secondary mb-4">
+                Quantized GGUF version of Qwopus 9B Unfettered for efficient local inference with llama.cpp and Ollama.
+              </p>
+              <a 
+                href="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF" 
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+              >
+                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+              </a>
+            </div>
+
+            {/* Qwen2.5 0.5B Unfettered */}
+            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-brain text-accent text-xl"></i>
+                  <h3 className="text-lg font-bold text-text-primary">Qwen2.5 0.5B Unfettered</h3>
+                </div>
+                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">411+ downloads</span>
+              </div>
+              <p className="text-sm text-text-secondary mb-4">
+                Lightweight 0.5B parameter uncensored model based on Qwen2.5. Optimized for edge deployment and resource-constrained environments.
+              </p>
+              <a 
+                href="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered" 
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+              >
+                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+              </a>
+            </div>
+
+            {/* Refusal Compliance Pairs Dataset */}
+            <div className="bg-card border border-border-subtle rounded-xl p-6 hover:border-accent/50 transition-all">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-database text-accent text-xl"></i>
+                  <h3 className="text-lg font-bold text-text-primary">Refusal Compliance Pairs</h3>
+                </div>
+                <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">168+ downloads</span>
+              </div>
+              <p className="text-sm text-text-secondary mb-4">
+                Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation.
+              </p>
+              <a 
+                href="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs" 
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+              >
+                <i className="fa-solid fa-face-smile"></i> View on HuggingFace
+              </a>
+            </div>
           </div>
         </div>
       </section>
