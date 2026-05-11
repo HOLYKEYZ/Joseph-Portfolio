@@ -199,8 +199,8 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <svg width="16" height="16" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2.5 15a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5-4H6c-.4-2.1.5-4.4 2.5-5.6l-.9-1.5c-.2-.3-.1-.6.2-.8.3-.2.6-.1.8.2l.9 1.6c.8-.3 1.6-.4 2.5-.4s1.7.1 2.5.4l.9-1.6c.2-.3.5-.4.8-.2.3.2.4.5.2.8l-.9 1.5C17.5 6.6 18.4 8.9 18 11z"/>
         </svg>
         View on HuggingFace
       </a>
@@ -345,9 +345,9 @@ export default function Home() {
               <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
-                <svg width="20" height="20" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
+              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors flex items-center justify-center" title="HuggingFace">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2.5 15a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5-4H6c-.4-2.1.5-4.4 2.5-5.6l-.9-1.5c-.2-.3-.1-.6.2-.8.3-.2.6-.1.8.2l.9 1.6c.8-.3 1.6-.4 2.5-.4s1.7.1 2.5.4l.9-1.6c.2-.3.5-.4.8-.2.3.2.4.5.2.8l-.9 1.5C17.5 6.6 18.4 8.9 18 11z"/>
                 </svg>
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
@@ -565,8 +565,8 @@ export default function Home() {
               <i className="fa-brands fa-github"></i>
             </a>
             <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1 flex items-center justify-center" title="HuggingFace">
-              <svg width="24" height="24" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2.5 15a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5-4H6c-.4-2.1.5-4.4 2.5-5.6l-.9-1.5c-.2-.3-.1-.6.2-.8.3-.2.6-.1.8.2l.9 1.6c.8-.3 1.6-.4 2.5-.4s1.7.1 2.5.4l.9-1.6c.2-.3.5-.4.8-.2.3.2.4.5.2.8l-.9 1.5C17.5 6.6 18.4 8.9 18 11z"/>
               </svg>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
