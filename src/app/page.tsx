@@ -152,9 +152,10 @@ function ModelCard({
         const response = await fetch(apiUrl);
         const data = await response.json();
         
-        // Try multiple possible fields for download count
-        const downloadCount = data.downloads || data.downloadsAllTime || data.download_count || 0;
-        setDownloads(downloadCount);
+        // Log the response to see what fields are available
+        console.log(`${type} API response for ${repoPath}:`, data);
+        
+        setDownloads(data.downloads || 0);
       } catch (error) {
         console.error('Error fetching downloads:', error);
         setDownloads(null);
@@ -198,7 +199,10 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <span className="text-base">🤗</span> View on HuggingFace
+        <svg className="w-4 h-4" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+        </svg>
+        View on HuggingFace
       </a>
     </div>
   );
@@ -341,8 +345,10 @@ export default function Home() {
               <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors flex items-center" title="HuggingFace">
-                <span className="font-bold text-base">🤗</span>
+              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
+                <svg className="w-5 h-5" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+                </svg>
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-x-twitter"></i>
@@ -558,8 +564,10 @@ export default function Home() {
             <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-github"></i>
             </a>
-            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1 flex items-center" title="HuggingFace">
-              <span className="text-2xl">🤗</span>
+            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1" title="HuggingFace">
+              <svg className="w-6 h-6" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+              </svg>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-x-twitter"></i>
