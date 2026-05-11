@@ -152,10 +152,20 @@ function ModelCard({
         const response = await fetch(apiUrl);
         const data = await response.json();
         
-        // Log the response to see what fields are available
+        // Check the actual response structure
         console.log(`${type} API response for ${repoPath}:`, data);
         
-        setDownloads(data.downloads || 0);
+        // For datasets, check if downloads is in a different location
+        let downloadCount = 0;
+        if (data.downloads !== undefined) {
+          downloadCount = data.downloads;
+        } else if (data.cardData?.downloads !== undefined) {
+          downloadCount = data.cardData.downloads;
+        } else if (data.downloadsAllTime !== undefined) {
+          downloadCount = data.downloadsAllTime;
+        }
+        
+        setDownloads(downloadCount);
       } catch (error) {
         console.error('Error fetching downloads:', error);
         setDownloads(null);
