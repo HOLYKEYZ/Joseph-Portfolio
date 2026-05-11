@@ -152,7 +152,7 @@ function ModelCard({
         const response = await fetch(apiUrl);
         const data = await response.json();
         
-        // For datasets, the field might be 'downloads' or nested differently
+        // Try multiple possible fields for download count
         const downloadCount = data.downloads || data.downloadsAllTime || data.download_count || 0;
         setDownloads(downloadCount);
       } catch (error) {
@@ -198,16 +198,7 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <svg className="w-4 h-4" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M47.21 70.471c-3.148 0-5.701-2.553-5.701-5.701s2.553-5.701 5.701-5.701 5.701 2.553 5.701 5.701-2.553 5.701-5.701 5.701zm0-8.84c-1.732 0-3.139 1.407-3.139 3.139s1.407 3.139 3.139 3.139 3.139-1.407 3.139-3.139-1.407-3.139-3.139-3.139z"/>
-          <path d="M73.838 42.972c-3.148 0-5.701-2.553-5.701-5.701s2.553-5.701 5.701-5.701 5.701 2.553 5.701 5.701-2.553 5.701-5.701 5.701zm0-8.84c-1.732 0-3.139 1.407-3.139 3.139s1.407 3.139 3.139 3.139 3.139-1.407 3.139-3.139-1.407-3.139-3.139-3.139z"/>
-          <path d="M20.582 42.972c-3.148 0-5.701-2.553-5.701-5.701s2.553-5.701 5.701-5.701 5.701 2.553 5.701 5.701-2.553 5.701-5.701 5.701zm0-8.84c-1.732 0-3.139 1.407-3.139 3.139s1.407 3.139 3.139 3.139 3.139-1.407 3.139-3.139-1.407-3.139-3.139-3.139z"/>
-          <path d="M47.21 87.421c-23.673 0-42.921-19.248-42.921-42.921S23.537 1.579 47.21 1.579 90.131 20.827 90.131 44.5 70.883 87.421 47.21 87.421zm0-83.28C25.122 4.141 6.851 22.412 6.851 44.5s18.271 40.359 40.359 40.359S87.569 66.588 87.569 44.5 69.298 4.141 47.21 4.141z"/>
-          <path d="M47.21 70.471c-.707 0-1.281-.574-1.281-1.281V46.062c0-.707.574-1.281 1.281-1.281s1.281.574 1.281 1.281V69.19c0 .707-.574 1.281-1.281 1.281z"/>
-          <path d="M73.838 44.5H47.21c-.707 0-1.281-.574-1.281-1.281s.574-1.281 1.281-1.281h26.628c.707 0 1.281.574 1.281 1.281S74.545 44.5 73.838 44.5z"/>
-          <path d="M47.21 44.5H20.582c-.707 0-1.281-.574-1.281-1.281s.574-1.281 1.281-1.281H47.21c.707 0 1.281.574 1.281 1.281S47.917 44.5 47.21 44.5z"/>
-        </svg>
-        View on HuggingFace
+        <span className="text-base">🤗</span> View on HuggingFace
       </a>
     </div>
   );
@@ -350,8 +341,8 @@ export default function Home() {
               <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
-                <i className="fa-brands fa-hf"></i>
+              <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors flex items-center" title="HuggingFace">
+                <span className="font-bold text-base">🤗</span>
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
                 <i className="fa-brands fa-x-twitter"></i>
@@ -567,8 +558,8 @@ export default function Home() {
             <a href="https://github.com/HOLYKEYZ" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-github"></i>
             </a>
-            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1" title="HuggingFace">
-              <i className="fa-brands fa-hf"></i>
+            <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1 flex items-center" title="HuggingFace">
+              <span className="text-2xl">🤗</span>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
               <i className="fa-brands fa-x-twitter"></i>
