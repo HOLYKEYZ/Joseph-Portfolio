@@ -152,20 +152,8 @@ function ModelCard({
         const response = await fetch(apiUrl);
         const data = await response.json();
         
-        // Check the actual response structure
-        console.log(`${type} API response for ${repoPath}:`, data);
-        
-        // For datasets, check if downloads is in a different location
-        let downloadCount = 0;
-        if (data.downloads !== undefined) {
-          downloadCount = data.downloads;
-        } else if (data.cardData?.downloads !== undefined) {
-          downloadCount = data.cardData.downloads;
-        } else if (data.downloadsAllTime !== undefined) {
-          downloadCount = data.downloadsAllTime;
-        }
-        
-        setDownloads(downloadCount);
+        // Read downloads field directly from the response
+        setDownloads(data.downloads || 0);
       } catch (error) {
         console.error('Error fetching downloads:', error);
         setDownloads(null);
@@ -209,8 +197,8 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <svg className="w-4 h-4" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
+        <svg width="16" height="16" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
         </svg>
         View on HuggingFace
       </a>
@@ -356,8 +344,8 @@ export default function Home() {
                 <i className="fa-brands fa-github"></i>
               </a>
               <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
-                <svg className="w-5 h-5" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
+                <svg width="20" height="20" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
                 </svg>
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
@@ -575,8 +563,8 @@ export default function Home() {
               <i className="fa-brands fa-github"></i>
             </a>
             <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1" title="HuggingFace">
-              <svg className="w-6 h-6" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
+              <svg width="24" height="24" viewBox="0 0 95 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M47.5 0C21.3 0 0 19.7 0 44c0 24.3 21.3 44 47.5 44S95 68.3 95 44C95 19.7 73.7 0 47.5 0zm-9.8 58.5c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm19.6 0c-3.5 0-6.3-2.8-6.3-6.3s2.8-6.3 6.3-6.3 6.3 2.8 6.3 6.3-2.8 6.3-6.3 6.3zm14.2-20.3H23.5c-1.4-8.4 2.1-17.5 9.8-22.4l-3.5-6c-.7-1.1-.3-2.5.8-3.1 1.1-.7 2.5-.3 3.1.8l3.6 6.2c3.1-1.1 6.5-1.7 10.2-1.7s7.1.6 10.2 1.7l3.6-6.2c.7-1.1 2.1-1.5 3.1-.8 1.1.7 1.5 2.1.8 3.1l-3.5 6c7.8 4.9 11.2 14 9.8 22.4z"/>
               </svg>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
