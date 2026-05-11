@@ -209,8 +209,8 @@ function ModelCard({
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        <svg className="w-4 h-4" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+        <svg className="w-4 h-4" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
         </svg>
         View on HuggingFace
       </a>
@@ -356,8 +356,8 @@ export default function Home() {
                 <i className="fa-brands fa-github"></i>
               </a>
               <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors" title="HuggingFace">
-                <svg className="w-5 h-5" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+                <svg className="w-5 h-5" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
                 </svg>
               </a>
               <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-lg transition-colors">
@@ -575,8 +575,8 @@ export default function Home() {
               <i className="fa-brands fa-github"></i>
             </a>
             <a href="https://huggingface.co/josephmayo" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1" title="HuggingFace">
-              <svg className="w-6 h-6" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm0 2c6.08 0 11 4.92 11 11s-4.92 11-11 11S5 22.08 5 16 9.92 5 16 5zm-4.5 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm9 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM16 17c-2.5 0-4.5 1.5-4.5 3.5 0 .28.22.5.5.5h8c.28 0 .5-.22.5-.5 0-2-2-3.5-4.5-3.5z"/>
+              <svg className="w-6 h-6" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.002 0C5.385 0 0 5.385 0 12.002c0 6.616 5.385 12.002 12.002 12.002 6.616 0 12.002-5.386 12.002-12.002C24.004 5.385 18.618 0 12.002 0zM8.55 18.389c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658zm6.896 0c-1.468 0-2.658-1.19-2.658-2.658s1.19-2.658 2.658-2.658 2.658 1.19 2.658 2.658-1.19 2.658-2.658 2.658z"/>
               </svg>
             </a>
             <a href="https://x.com/jos44711" target="_blank" className="text-text-secondary hover:text-text-primary text-2xl transition-all hover:-translate-y-1">
