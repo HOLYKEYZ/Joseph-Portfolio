@@ -403,7 +403,7 @@ export default function Home() {
                 i am an <span className="text-text-primary font-medium">AI engineer and fullstack developer</span> driven by a singular mission: building impactful software that pushes the boundaries of innovation and solves real-world problems.
               </p>
               <p className="mb-6 text-text-secondary text-lg">
-                from training and fine-tuning language models to architecting full-stack applications, i specialize in <span className="text-text-primary font-medium">machine learning engineering, AI safety research, and agentic systems</span>. my work spans model development, red teaming protocols, and building intelligent infrastructures that drive meaningful impact.
+                from training and fine-tuning language models to architecting full-stack applications, i specialize in <span className="text-text-primary font-medium">machine learning, AI safety & red teaming, agentic systems & local ai</span>. my work spans model development, red teaming protocols, and building intelligent infrastructures that drive meaningful impact.
               </p>
               <p className="font-bold text-white text-xl">
                 my work bridges cutting-edge ML research with production-ready software engineering.
