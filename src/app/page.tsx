@@ -418,8 +418,8 @@ export default function Home() {
                   <i className="fa-solid fa-bullseye text-accent mr-2"></i> core mission
                 </h3>
                 <ul className="list-none flex flex-col gap-4 text-text-secondary">
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> impactful AI innovation</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> ML engineering & research</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> AI safety & red teaming</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> agentic systems</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> fullstack development</li>
                 </ul>
