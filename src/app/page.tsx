@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Typewriter component
 function Typewriter() {
@@ -206,6 +206,218 @@ function ModelCard({
   );
 }
 
+function RobotPet() {
+  const petRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const pointerRef = useRef({
+    x: 0,
+    y: 0,
+    active: false,
+    dragging: false,
+    offsetX: 0,
+    offsetY: 0,
+    lastX: 0,
+    lastY: 0,
+    lastTime: 0
+  });
+  const stateRef = useRef({
+    x: 90,
+    y: 160,
+    vx: 0.7,
+    vy: 0.3,
+    faceX: 0,
+    faceY: 0,
+    mood: 0
+  });
+
+  useEffect(() => {
+    const petSize = 96;
+    const dragVelocityScale = 18;
+    const cursorRange = 170;
+    const cursorPush = 0.04;
+    const homePull = 0.0012;
+    const friction = 0.985;
+    const bounce = 0.78;
+    const maxVelocity = 10;
+    const moodDecay = 0.94;
+
+    const movePointer = (event: PointerEvent) => {
+      const pointer = pointerRef.current;
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+      pointer.active = true;
+
+      if (!pointer.dragging) {
+        return;
+      }
+
+      const now = performance.now();
+      const deltaTime = Math.max(now - pointer.lastTime, 16);
+      const nextX = event.clientX - pointer.offsetX;
+      const nextY = event.clientY - pointer.offsetY;
+      const state = stateRef.current;
+
+      state.vx = ((nextX - pointer.lastX) / deltaTime) * dragVelocityScale;
+      state.vy = ((nextY - pointer.lastY) / deltaTime) * dragVelocityScale;
+      state.x = nextX;
+      state.y = nextY;
+      state.mood = 1;
+      pointer.lastX = nextX;
+      pointer.lastY = nextY;
+      pointer.lastTime = now;
+    };
+
+    const leavePointer = () => {
+      pointerRef.current.active = false;
+    };
+
+    window.addEventListener('pointermove', movePointer);
+    window.addEventListener('pointerleave', leavePointer);
+
+    const animate = () => {
+      const pet = petRef.current;
+
+      if (!pet) {
+        frameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      const pointer = pointerRef.current;
+      const state = stateRef.current;
+      const maxX = window.innerWidth - petSize;
+      const maxY = window.innerHeight - petSize;
+
+      if (!pointer.dragging) {
+        const centerX = state.x + petSize / 2;
+        const centerY = state.y + petSize / 2;
+
+        if (pointer.active) {
+          const deltaX = centerX - pointer.x;
+          const deltaY = centerY - pointer.y;
+          const distance = Math.max(Math.hypot(deltaX, deltaY), 1);
+          const influence = Math.max(0, cursorRange - distance) / cursorRange;
+
+          state.vx += (deltaX / distance) * influence * cursorPush;
+          state.vy += (deltaY / distance) * influence * cursorPush;
+          state.faceX += ((pointer.x - centerX) / cursorRange - state.faceX) * 0.12;
+          state.faceY += ((pointer.y - centerY) / cursorRange - state.faceY) * 0.12;
+          state.mood = Math.max(state.mood, influence);
+        } else {
+          state.faceX += -state.faceX * 0.08;
+          state.faceY += -state.faceY * 0.08;
+        }
+
+        state.vx += (90 - state.x) * homePull;
+        state.vy += (160 - state.y) * homePull;
+        state.vx += Math.sin(performance.now() / 900) * 0.012;
+        state.vy += Math.cos(performance.now() / 1100) * 0.01;
+        state.vx *= friction;
+        state.vy *= friction;
+        state.vx = Math.max(-maxVelocity, Math.min(maxVelocity, state.vx));
+        state.vy = Math.max(-maxVelocity, Math.min(maxVelocity, state.vy));
+        state.x += state.vx;
+        state.y += state.vy;
+      }
+
+      if (state.x < 0) {
+        state.x = 0;
+        state.vx = Math.abs(state.vx) * bounce;
+      }
+
+      if (state.x > maxX) {
+        state.x = maxX;
+        state.vx = -Math.abs(state.vx) * bounce;
+      }
+
+      if (state.y < 78) {
+        state.y = 78;
+        state.vy = Math.abs(state.vy) * bounce;
+      }
+
+      if (state.y > maxY) {
+        state.y = maxY;
+        state.vy = -Math.abs(state.vy) * bounce;
+      }
+
+      state.mood *= moodDecay;
+      pet.style.setProperty('--pet-x', `${state.x}px`);
+      pet.style.setProperty('--pet-y', `${state.y}px`);
+      pet.style.setProperty('--eye-x', `${Math.max(-5, Math.min(5, state.faceX * 8))}px`);
+      pet.style.setProperty('--eye-y', `${Math.max(-3, Math.min(3, state.faceY * 6))}px`);
+      pet.style.setProperty('--pet-tilt', `${Math.max(-12, Math.min(12, state.vx * 2.5))}deg`);
+      pet.dataset.dragging = pointer.dragging ? 'true' : 'false';
+      pet.dataset.excited = state.mood > 0.25 ? 'true' : 'false';
+      frameRef.current = requestAnimationFrame(animate);
+    };
+
+    frameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('pointermove', movePointer);
+      window.removeEventListener('pointerleave', leavePointer);
+
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, []);
+
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const pointer = pointerRef.current;
+    const state = stateRef.current;
+
+    pointer.dragging = true;
+    pointer.active = true;
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+    pointer.offsetX = event.clientX - state.x;
+    pointer.offsetY = event.clientY - state.y;
+    pointer.lastX = state.x;
+    pointer.lastY = state.y;
+    pointer.lastTime = performance.now();
+    state.mood = 1;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const stopDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    pointerRef.current.dragging = false;
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  return (
+    <div
+      ref={petRef}
+      className="robot-pet"
+      aria-label="interactive robot pet"
+      role="img"
+      onPointerDown={startDrag}
+      onPointerUp={stopDrag}
+      onPointerCancel={stopDrag}
+    >
+      <div className="robot-pet__antenna">
+        <span />
+      </div>
+      <div className="robot-pet__head">
+        <div className="robot-pet__screen">
+          <span className="robot-pet__eye robot-pet__eye--left" />
+          <span className="robot-pet__eye robot-pet__eye--right" />
+          <span className="robot-pet__mouth" />
+        </div>
+      </div>
+      <div className="robot-pet__body">
+        <span className="robot-pet__core" />
+      </div>
+      <span className="robot-pet__arm robot-pet__arm--left" />
+      <span className="robot-pet__arm robot-pet__arm--right" />
+      <span className="robot-pet__leg robot-pet__leg--left" />
+      <span className="robot-pet__leg robot-pet__leg--right" />
+    </div>
+  );
+}
+
 export default function Home() {
   const projects = [
     {
@@ -373,6 +585,7 @@ export default function Home() {
           backgroundAttachment: 'fixed'
         }}
       >
+        <RobotPet />
         <div className="container mx-auto px-8 max-w-[800px] text-center z-10">
           <Typewriter />
 
