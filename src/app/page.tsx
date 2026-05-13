@@ -422,6 +422,7 @@ export default function Home() {
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> AI safety & red teaming</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> agentic systems</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> fullstack development</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> local AI(OSS)</li>
                 </ul>
               </div>
             </div>
