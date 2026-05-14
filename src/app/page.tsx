@@ -4,13 +4,6 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
 const TITLES = ["AI engineer", "fullstack developer", "ML researcher"];
-const CONTACT_ICONS = [
-  "fa-brands fa-github",
-  "fa-brands fa-x-twitter",
-  "fa-solid fa-envelope",
-  "fa-brands fa-whatsapp",
-  "fa-solid fa-code"
-];
 
 // Typewriter component
 function Typewriter() {
@@ -218,7 +211,6 @@ function ModelCard({
 }
 
 function RobotPet() {
-  const [iconIndex, setIconIndex] = useState(0);
   const petRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
   const pointerRef = useRef({
@@ -244,14 +236,6 @@ function RobotPet() {
     mood: 0,
     ready: false
   });
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setIconIndex((current) => (current + 1) % CONTACT_ICONS.length);
-    }, 2400);
-
-    return () => window.clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const petSize = 58;
@@ -451,9 +435,6 @@ function RobotPet() {
         <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="1" />
         <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="1" />
       </svg>
-      <span className="robot-pet__held-icon" aria-hidden="true">
-        <i className={CONTACT_ICONS[iconIndex]} />
-      </span>
     </div>
   );
 }
