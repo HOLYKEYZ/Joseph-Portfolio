@@ -225,30 +225,40 @@ function RobotPet() {
     lastTime: 0
   });
   const stateRef = useRef({
-    x: 90,
-    y: 160,
-    vx: 0.7,
-    vy: 0.3,
+    x: 0,
+    y: 0,
+    homeX: 0,
+    homeY: 145,
+    vx: 0.35,
+    vy: 0.18,
     faceX: 0,
     faceY: 0,
-    mood: 0
+    mood: 0,
+    ready: false
   });
 
   useEffect(() => {
-    const petSize = 96;
-    const dragVelocityScale = 18;
-    const cursorRange = 170;
-    const cursorPush = 0.04;
-    const homePull = 0.0012;
-    const friction = 0.985;
-    const bounce = 0.78;
-    const maxVelocity = 10;
+    const petSize = 58;
+    const dragVelocityScale = 14;
+    const cursorRange = 130;
+    const cursorPush = 0.025;
+    const homePull = 0.00015;
+    const friction = 0.988;
+    const bounce = 0.72;
+    const maxVelocity = 7;
     const moodDecay = 0.94;
 
     const movePointer = (event: PointerEvent) => {
+      const pet = petRef.current;
+
+      if (!pet?.parentElement) {
+        return;
+      }
+
+      const bounds = pet.parentElement.getBoundingClientRect();
       const pointer = pointerRef.current;
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
+      pointer.x = event.clientX - bounds.left;
+      pointer.y = event.clientY - bounds.top;
       pointer.active = true;
 
       if (!pointer.dragging) {
@@ -257,8 +267,8 @@ function RobotPet() {
 
       const now = performance.now();
       const deltaTime = Math.max(now - pointer.lastTime, 16);
-      const nextX = event.clientX - pointer.offsetX;
-      const nextY = event.clientY - pointer.offsetY;
+      const nextX = pointer.x - pointer.offsetX;
+      const nextY = pointer.y - pointer.offsetY;
       const state = stateRef.current;
 
       state.vx = ((nextX - pointer.lastX) / deltaTime) * dragVelocityScale;
@@ -288,8 +298,23 @@ function RobotPet() {
 
       const pointer = pointerRef.current;
       const state = stateRef.current;
-      const maxX = window.innerWidth - petSize;
-      const maxY = window.innerHeight - petSize;
+      const parent = pet.parentElement;
+
+      if (!parent) {
+        frameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      const maxX = parent.clientWidth - petSize;
+      const maxY = parent.clientHeight - petSize;
+
+      if (!state.ready) {
+        state.homeX = Math.max(26, Math.min(maxX, parent.clientWidth * 0.34));
+        state.homeY = 115;
+        state.x = state.homeX;
+        state.y = state.homeY;
+        state.ready = true;
+      }
 
       if (!pointer.dragging) {
         const centerX = state.x + petSize / 2;
@@ -311,10 +336,10 @@ function RobotPet() {
           state.faceY += -state.faceY * 0.08;
         }
 
-        state.vx += (90 - state.x) * homePull;
-        state.vy += (160 - state.y) * homePull;
-        state.vx += Math.sin(performance.now() / 900) * 0.012;
-        state.vy += Math.cos(performance.now() / 1100) * 0.01;
+        state.vx += (state.homeX - state.x) * homePull;
+        state.vy += (state.homeY - state.y) * homePull;
+        state.vx += Math.sin(performance.now() / 900) * 0.006;
+        state.vy += Math.cos(performance.now() / 1100) * 0.005;
         state.vx *= friction;
         state.vy *= friction;
         state.vx = Math.max(-maxVelocity, Math.min(maxVelocity, state.vx));
@@ -369,13 +394,18 @@ function RobotPet() {
   const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
     const pointer = pointerRef.current;
     const state = stateRef.current;
+    const bounds = event.currentTarget.parentElement?.getBoundingClientRect();
+
+    if (!bounds) {
+      return;
+    }
 
     pointer.dragging = true;
     pointer.active = true;
-    pointer.x = event.clientX;
-    pointer.y = event.clientY;
-    pointer.offsetX = event.clientX - state.x;
-    pointer.offsetY = event.clientY - state.y;
+    pointer.x = event.clientX - bounds.left;
+    pointer.y = event.clientY - bounds.top;
+    pointer.offsetX = pointer.x - state.x;
+    pointer.offsetY = pointer.y - state.y;
     pointer.lastX = state.x;
     pointer.lastY = state.y;
     pointer.lastTime = performance.now();
@@ -384,7 +414,11 @@ function RobotPet() {
   };
 
   const stopDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const state = stateRef.current;
+
     pointerRef.current.dragging = false;
+    state.homeX = state.x;
+    state.homeY = state.y;
 
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
@@ -401,23 +435,23 @@ function RobotPet() {
       onPointerUp={stopDrag}
       onPointerCancel={stopDrag}
     >
-      <div className="robot-pet__antenna">
-        <span />
-      </div>
-      <div className="robot-pet__head">
-        <div className="robot-pet__screen">
-          <span className="robot-pet__eye robot-pet__eye--left" />
-          <span className="robot-pet__eye robot-pet__eye--right" />
-          <span className="robot-pet__mouth" />
-        </div>
-      </div>
-      <div className="robot-pet__body">
-        <span className="robot-pet__core" />
-      </div>
-      <span className="robot-pet__arm robot-pet__arm--left" />
-      <span className="robot-pet__arm robot-pet__arm--right" />
-      <span className="robot-pet__leg robot-pet__leg--left" />
-      <span className="robot-pet__leg robot-pet__leg--right" />
+      <svg className="robot-pet__svg" viewBox="0 0 58 66" aria-hidden="true">
+        <line className="robot-pet__antenna-stem" x1="29" y1="10" x2="29" y2="17" />
+        <circle className="robot-pet__antenna-light" cx="29" cy="7" r="4" />
+        <path className="robot-pet__arm robot-pet__arm--left" d="M9 36 L4 43 L8 47 L13 40" />
+        <path className="robot-pet__arm robot-pet__arm--right" d="M49 36 L54 43 L50 47 L45 40" />
+        <rect className="robot-pet__ear robot-pet__ear--left" x="10" y="26" width="5" height="15" rx="2" />
+        <rect className="robot-pet__ear robot-pet__ear--right" x="43" y="26" width="5" height="15" rx="2" />
+        <rect className="robot-pet__head" x="14" y="17" width="30" height="30" rx="4" />
+        <rect className="robot-pet__screen" x="18" y="22" width="22" height="17" rx="2" />
+        <rect className="robot-pet__eye robot-pet__eye--left" x="22" y="29" width="3" height="4" rx="1" />
+        <rect className="robot-pet__eye robot-pet__eye--right" x="33" y="29" width="3" height="4" rx="1" />
+        <path className="robot-pet__mouth" d="M26 36 Q29 38 32 36" />
+        <rect className="robot-pet__body" x="22" y="47" width="14" height="11" rx="3" />
+        <rect className="robot-pet__core" x="27" y="50" width="4" height="4" rx="1" />
+        <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="2" />
+        <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="2" />
+      </svg>
     </div>
   );
 }
