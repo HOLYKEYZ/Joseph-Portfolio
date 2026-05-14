@@ -4,6 +4,13 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
 const TITLES = ["AI engineer", "fullstack developer", "ML researcher"];
+const CONTACT_ICONS = [
+  "fa-brands fa-github",
+  "fa-brands fa-x-twitter",
+  "fa-solid fa-envelope",
+  "fa-brands fa-whatsapp",
+  "fa-solid fa-code"
+];
 
 // Typewriter component
 function Typewriter() {
@@ -211,6 +218,7 @@ function ModelCard({
 }
 
 function RobotPet() {
+  const [iconIndex, setIconIndex] = useState(0);
   const petRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
   const pointerRef = useRef({
@@ -238,6 +246,14 @@ function RobotPet() {
   });
 
   useEffect(() => {
+    const interval = window.setInterval(() => {
+      setIconIndex((current) => (current + 1) % CONTACT_ICONS.length);
+    }, 2400);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const petSize = 58;
     const dragVelocityScale = 14;
     const cursorRange = 130;
@@ -249,16 +265,9 @@ function RobotPet() {
     const moodDecay = 0.94;
 
     const movePointer = (event: PointerEvent) => {
-      const pet = petRef.current;
-
-      if (!pet?.parentElement) {
-        return;
-      }
-
-      const bounds = pet.parentElement.getBoundingClientRect();
       const pointer = pointerRef.current;
-      pointer.x = event.clientX - bounds.left;
-      pointer.y = event.clientY - bounds.top;
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
       pointer.active = true;
 
       if (!pointer.dragging) {
@@ -298,18 +307,11 @@ function RobotPet() {
 
       const pointer = pointerRef.current;
       const state = stateRef.current;
-      const parent = pet.parentElement;
-
-      if (!parent) {
-        frameRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      const maxX = parent.clientWidth - petSize;
-      const maxY = parent.clientHeight - petSize;
+      const maxX = window.innerWidth - petSize;
+      const maxY = window.innerHeight - petSize;
 
       if (!state.ready) {
-        state.homeX = Math.max(26, Math.min(maxX, parent.clientWidth * 0.34));
+        state.homeX = Math.max(26, Math.min(maxX, window.innerWidth * 0.12));
         state.homeY = 115;
         state.x = state.homeX;
         state.y = state.homeY;
@@ -394,16 +396,11 @@ function RobotPet() {
   const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
     const pointer = pointerRef.current;
     const state = stateRef.current;
-    const bounds = event.currentTarget.parentElement?.getBoundingClientRect();
-
-    if (!bounds) {
-      return;
-    }
 
     pointer.dragging = true;
     pointer.active = true;
-    pointer.x = event.clientX - bounds.left;
-    pointer.y = event.clientY - bounds.top;
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
     pointer.offsetX = pointer.x - state.x;
     pointer.offsetY = pointer.y - state.y;
     pointer.lastX = state.x;
@@ -454,6 +451,9 @@ function RobotPet() {
         <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="1" />
         <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="1" />
       </svg>
+      <span className="robot-pet__held-icon" aria-hidden="true">
+        <i className={CONTACT_ICONS[iconIndex]} />
+      </span>
     </div>
   );
 }
