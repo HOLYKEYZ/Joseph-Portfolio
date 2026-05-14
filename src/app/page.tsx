@@ -332,7 +332,7 @@ export default function Home() {
   return (
     <>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full h-[70px] nav-glass border-b border-border-subtle z-50 flex items-center">
+      <nav className="fixed top-0 w-full h-[70px] nav-glass border-b border-border-subtle z-50 flex items-center" aria-label="primary">
         <div className="container mx-auto px-8 flex justify-between items-center">
           <a href="#" className="font-display text-2xl font-bold text-text-primary">
             AJ<span className="text-accent">.</span>
@@ -369,49 +369,78 @@ export default function Home() {
         </div>
       </nav>
 
+      <main id="main">
       {/* Hero Section */}
-      <header className="min-h-screen flex items-center justify-center pt-[70px] relative overflow-hidden"
+      <header
+        className="min-h-[100dvh] flex items-center pt-[100px] pb-24 relative overflow-hidden hero-grain"
         style={{
-          background: 'linear-gradient(to bottom, rgba(10,10,10,0.7), rgba(10,10,10,0.9)), url(/image.png)',
+          background: 'radial-gradient(120% 80% at 75% 20%, rgba(251,191,36,0.06), transparent 55%), radial-gradient(80% 60% at 10% 90%, rgba(255,255,255,0.04), transparent 60%), linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.95)), url(/image.png)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundPosition: 'center'
         }}
       >
-        <div className="container mx-auto px-8 max-w-[800px] text-center z-10">
-          <Typewriter />
+        <div className="container mx-auto px-8 max-w-6xl z-10 grid md:grid-cols-12 gap-10 items-center">
+          <div className="md:col-span-8">
+            <div className="flex items-center gap-3 mb-8 text-mono text-xs uppercase tracking-[0.18em] text-text-secondary animate-slide-up">
+              <span className="inline-flex items-center gap-2">
+                <span className="relative inline-flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-accent/60 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                </span>
+                <span>lagos &mdash; available for select work</span>
+              </span>
+              <span aria-hidden="true" className="hidden sm:inline text-text-secondary/40">/</span>
+              <Typewriter />
+            </div>
 
-          <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-            building impactful things.
-          </h1>
+            <h1 className="font-display text-[clamp(2.5rem,7vw,5.25rem)] font-semibold leading-[0.98] tracking-tight mb-6 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
+              ml engineering and ai safety research,<br className="hidden md:block" /> shipped end to end.
+            </h1>
 
-          <p className="text-xl text-gray-300 max-w-[600px] mx-auto mb-10 animate-slide-up animate-slide-up-delay-2">
-            crafting intelligent systems and innovative software that drive real impact and push the boundaries of what&apos;s possible.
-          </p>
+            <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] mb-10 animate-slide-up animate-slide-up-delay-2">
+              i train and red team language models, ship production fullstack systems, and publish open weights and datasets focused on honest evaluation &mdash; not vibes.
+            </p>
 
-          <div className="flex gap-4 justify-center animate-slide-up animate-slide-up-delay-3">
-            <a href="#work" className="px-6 py-3 rounded-lg font-semibold bg-white text-background hover:bg-gray-100 transition-all flex items-center gap-2 no-underline">
-              view work <i className="fa-solid fa-arrow-right"></i>
-            </a>
+            <div className="flex flex-wrap gap-3 animate-slide-up animate-slide-up-delay-3">
+              <a href="#work" className="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium bg-white text-background hover:bg-zinc-200 no-underline">
+                see selected work <i className="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+              <a href="#models" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-primary border border-border-subtle hover:border-border-highlight no-underline">
+                browse open models
+              </a>
+              <a href="#contact" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-secondary hover:text-text-primary no-underline">
+                get in touch
+              </a>
+            </div>
           </div>
+
+          <aside className="md:col-span-4 hidden md:flex flex-col gap-3 text-mono text-xs text-text-secondary border-l border-border-subtle pl-6 animate-slide-up animate-slide-up-delay-3" aria-label="now">
+              <div className="flex justify-between"><span className="text-text-secondary/70">now</span><span className="text-text-primary">red teaming gemma + qwen</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">latest</span><span className="text-text-primary">gemma-4-e4b coder</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">models</span><span className="text-text-primary">6 on hf</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">downloads</span><span className="text-text-primary">2.7k+</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">stack</span><span className="text-text-primary">pytorch / next.js</span></div>
+          </aside>
         </div>
       </header>
 
       {/* About Section */}
-      <section id="about" className="py-24">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl mb-16 text-center font-display">about me</h2>
+      <section id="about" className="py-32 md:py-40">
+        <div className="container mx-auto px-8 max-w-6xl">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight">about</h2>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="mb-6 text-text-secondary text-lg">
-                i am an <span className="text-text-primary font-medium">AI/ML engineer and fullstack developer</span> driven by a singular mission: building impactful software that pushes the boundaries of innovation and solves real problems.
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <p className="text-text-secondary text-lg max-w-[58ch]">
+                i&apos;m an <span className="text-text-primary font-medium">ai/ml engineer and fullstack developer</span> working at the intersection of model training, safety research, and production software.
               </p>
-              <p className="mb-6 text-text-secondary text-lg">
-                from training and fine-tuning language models to architecting full-stack applications, i specialize in <span className="text-text-primary font-medium">machine learning, AI safety & red teaming, agentic systems & local ai</span>. my work spans model development, red teaming protocols, and building intelligent infrastructures that drive meaningful impact.
+              <p className="text-text-secondary text-lg max-w-[58ch]">
+                day to day: fine-tuning and quantizing language models (qwen, gemma), running red teaming and refusal-direction work, and shipping fullstack systems around them. local-first models when they make sense, hosted apis when they don&apos;t.
               </p>
-              <p className="font-bold text-white text-xl">
-                my work bridges cutting-edge ML research with production-ready software engineering.
+              <p className="text-text-primary text-lg max-w-[58ch] border-l-2 border-accent pl-4">
+                research that ships. evaluations that don&apos;t lie. tools other engineers actually use.
               </p>
             </div>
 
@@ -522,41 +551,67 @@ export default function Home() {
       </section>
 
       {/* Models & Datasets Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl mb-16 text-center font-display">models & datasets</h2>
+      <section id="models" className="py-32 md:py-40 bg-background">
+        <div className="container mx-auto px-8 max-w-6xl">
+          <div className="flex items-baseline justify-between gap-4 mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight">models &amp; datasets</h2>
+            <a href="https://huggingface.co/josephmayo" target="_blank" rel="noopener noreferrer" className="text-mono text-xs text-text-secondary hover:text-text-primary transition-colors">huggingface.co/josephmayo &rarr;</a>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ModelCard
+              name="gemma-4 E4B-it Coder"
+              type="model"
+              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. image-text-to-text capable."
+              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder"
+            />
+
+            <ModelCard
+              name="gemma-4 E4B-it Coder GGUF"
+              type="model"
+              description="quantized gguf builds of the gemma-4 e4b coder for local inference via llama.cpp, ollama and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder-GGUF"
+            />
+
+            <ModelCard
+              name="gemma-4 E4B-it Coding LoRA"
+              type="model"
+              description="lightweight lora adapter trained on top of gemma-4 e4b-it for code tasks. drop into base weights for instant coding behavior."
+              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-coding-lora"
+            />
+
             <ModelCard
               name="Qwopus 9B Unfettered"
               type="model"
-              description="Uncensored 9B parameter language model. Directional ablation applied to remove refusal mechanisms while maintaining capabilities."
+              description="9B uncensored language model. directional ablation applied to remove refusal mechanisms while preserving general capability."
               hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered"
             />
 
             <ModelCard
               name="Qwopus 9B Unfettered GGUF"
               type="model"
-              description="Quantized GGUF version of Qwopus 9B Unfettered for efficient local inference with llama.cpp and Ollama."
+              description="quantized gguf version of qwopus 9b for efficient local inference with llama.cpp and ollama."
               hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF"
             />
 
             <ModelCard
               name="Qwen2.5 0.5B Unfettered"
               type="model"
-              description="Lightweight 0.5B parameter uncensored model based on Qwen2.5. Optimized for edge deployment and resource-constrained environments."
+              description="0.5B uncensored variant of qwen2.5, tuned for edge deployment and resource-constrained environments."
               hfUrl="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered"
             />
 
             <ModelCard
               name="Refusal Compliance Pairs"
               type="dataset"
-              description="Curated dataset of 200+ refusal-compliance prompt pairs for AI safety research and red teaming evaluation."
+              description="200+ curated refusal-compliance prompt pairs for ai safety research and red teaming evaluation."
               hfUrl="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs"
             />
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* Footer */}
       <footer id="contact" className="bg-card border-t border-border-subtle py-16 text-center">
