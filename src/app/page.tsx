@@ -436,21 +436,23 @@ function RobotPet() {
       onPointerCancel={stopDrag}
     >
       <svg className="robot-pet__svg" viewBox="0 0 58 66" aria-hidden="true">
-        <line className="robot-pet__antenna-stem" x1="29" y1="10" x2="29" y2="17" />
-        <circle className="robot-pet__antenna-light" cx="29" cy="7" r="4" />
-        <path className="robot-pet__arm robot-pet__arm--left" d="M9 36 L4 43 L8 47 L13 40" />
-        <path className="robot-pet__arm robot-pet__arm--right" d="M49 36 L54 43 L50 47 L45 40" />
-        <rect className="robot-pet__ear robot-pet__ear--left" x="10" y="26" width="5" height="15" rx="2" />
-        <rect className="robot-pet__ear robot-pet__ear--right" x="43" y="26" width="5" height="15" rx="2" />
-        <rect className="robot-pet__head" x="14" y="17" width="30" height="30" rx="4" />
+        <line className="robot-pet__antenna-stem" x1="29" y1="11" x2="29" y2="17" />
+        <circle className="robot-pet__antenna-light" cx="29" cy="8" r="3.5" />
+        <path className="robot-pet__arm robot-pet__arm--left" d="M11 36 L5 42 L8 46 L14 40" />
+        <path className="robot-pet__arm robot-pet__arm--right" d="M47 36 L53 42 L50 46 L44 40" />
+        <rect className="robot-pet__ear robot-pet__ear--left" x="10" y="27" width="4" height="13" rx="1" />
+        <rect className="robot-pet__ear robot-pet__ear--right" x="44" y="27" width="4" height="13" rx="1" />
+        <rect className="robot-pet__head" x="14" y="17" width="30" height="29" rx="3" />
         <rect className="robot-pet__screen" x="18" y="22" width="22" height="17" rx="2" />
+        <rect className="robot-pet__screen-shine" x="20" y="24" width="5" height="2" rx="1" />
         <rect className="robot-pet__eye robot-pet__eye--left" x="22" y="29" width="3" height="4" rx="1" />
         <rect className="robot-pet__eye robot-pet__eye--right" x="33" y="29" width="3" height="4" rx="1" />
         <path className="robot-pet__mouth" d="M26 36 Q29 38 32 36" />
-        <rect className="robot-pet__body" x="22" y="47" width="14" height="11" rx="3" />
-        <rect className="robot-pet__core" x="27" y="50" width="4" height="4" rx="1" />
-        <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="2" />
-        <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="2" />
+        <rect className="robot-pet__neck" x="26" y="45" width="6" height="3" rx="1" />
+        <rect className="robot-pet__body" x="22" y="48" width="14" height="10" rx="2" />
+        <rect className="robot-pet__core" x="27" y="51" width="4" height="4" rx="1" />
+        <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="1" />
+        <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="1" />
       </svg>
     </div>
   );
