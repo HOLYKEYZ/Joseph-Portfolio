@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-const TITLES = ["AI engineer", "fullstack developer", "ML researcher"];
+const TITLES = ["AI/ML engineer", "fullstack developer", "AI safety & red teaming"];
 
 // Typewriter component
 function Typewriter() {
@@ -210,235 +210,6 @@ function ModelCard({
   );
 }
 
-function RobotPet() {
-  const petRef = useRef<HTMLDivElement>(null);
-  const frameRef = useRef<number | null>(null);
-  const pointerRef = useRef({
-    x: 0,
-    y: 0,
-    active: false,
-    dragging: false,
-    offsetX: 0,
-    offsetY: 0,
-    lastX: 0,
-    lastY: 0,
-    lastTime: 0
-  });
-  const stateRef = useRef({
-    x: 0,
-    y: 0,
-    homeX: 0,
-    homeY: 145,
-    vx: 0.35,
-    vy: 0.18,
-    faceX: 0,
-    faceY: 0,
-    mood: 0,
-    ready: false
-  });
-
-  useEffect(() => {
-    const petSize = 58;
-    const dragVelocityScale = 14;
-    const cursorRange = 130;
-    const cursorPush = 0.025;
-    const homePull = 0.00015;
-    const friction = 0.988;
-    const bounce = 0.72;
-    const maxVelocity = 7;
-    const moodDecay = 0.94;
-
-    const movePointer = (event: PointerEvent) => {
-      const pointer = pointerRef.current;
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
-      pointer.active = true;
-
-      if (!pointer.dragging) {
-        return;
-      }
-
-      const now = performance.now();
-      const deltaTime = Math.max(now - pointer.lastTime, 16);
-      const nextX = pointer.x - pointer.offsetX;
-      const nextY = pointer.y - pointer.offsetY;
-      const state = stateRef.current;
-
-      state.vx = ((nextX - pointer.lastX) / deltaTime) * dragVelocityScale;
-      state.vy = ((nextY - pointer.lastY) / deltaTime) * dragVelocityScale;
-      state.x = nextX;
-      state.y = nextY;
-      state.mood = 1;
-      pointer.lastX = nextX;
-      pointer.lastY = nextY;
-      pointer.lastTime = now;
-    };
-
-    const leavePointer = () => {
-      pointerRef.current.active = false;
-    };
-
-    window.addEventListener('pointermove', movePointer);
-    window.addEventListener('pointerleave', leavePointer);
-
-    const animate = () => {
-      const pet = petRef.current;
-
-      if (!pet) {
-        frameRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      const pointer = pointerRef.current;
-      const state = stateRef.current;
-      const maxX = window.innerWidth - petSize;
-      const maxY = window.innerHeight - petSize;
-
-      if (!state.ready) {
-        state.homeX = Math.max(26, Math.min(maxX, window.innerWidth * 0.12));
-        state.homeY = 115;
-        state.x = state.homeX;
-        state.y = state.homeY;
-        state.ready = true;
-      }
-
-      if (!pointer.dragging) {
-        const centerX = state.x + petSize / 2;
-        const centerY = state.y + petSize / 2;
-
-        if (pointer.active) {
-          const deltaX = centerX - pointer.x;
-          const deltaY = centerY - pointer.y;
-          const distance = Math.max(Math.hypot(deltaX, deltaY), 1);
-          const influence = Math.max(0, cursorRange - distance) / cursorRange;
-
-          state.vx += (deltaX / distance) * influence * cursorPush;
-          state.vy += (deltaY / distance) * influence * cursorPush;
-          state.faceX += ((pointer.x - centerX) / cursorRange - state.faceX) * 0.12;
-          state.faceY += ((pointer.y - centerY) / cursorRange - state.faceY) * 0.12;
-          state.mood = Math.max(state.mood, influence);
-        } else {
-          state.faceX += -state.faceX * 0.08;
-          state.faceY += -state.faceY * 0.08;
-        }
-
-        state.vx += (state.homeX - state.x) * homePull;
-        state.vy += (state.homeY - state.y) * homePull;
-        state.vx += Math.sin(performance.now() / 900) * 0.006;
-        state.vy += Math.cos(performance.now() / 1100) * 0.005;
-        state.vx *= friction;
-        state.vy *= friction;
-        state.vx = Math.max(-maxVelocity, Math.min(maxVelocity, state.vx));
-        state.vy = Math.max(-maxVelocity, Math.min(maxVelocity, state.vy));
-        state.x += state.vx;
-        state.y += state.vy;
-      }
-
-      if (state.x < 0) {
-        state.x = 0;
-        state.vx = Math.abs(state.vx) * bounce;
-      }
-
-      if (state.x > maxX) {
-        state.x = maxX;
-        state.vx = -Math.abs(state.vx) * bounce;
-      }
-
-      if (state.y < 78) {
-        state.y = 78;
-        state.vy = Math.abs(state.vy) * bounce;
-      }
-
-      if (state.y > maxY) {
-        state.y = maxY;
-        state.vy = -Math.abs(state.vy) * bounce;
-      }
-
-      state.mood *= moodDecay;
-      pet.style.setProperty('--pet-x', `${state.x}px`);
-      pet.style.setProperty('--pet-y', `${state.y}px`);
-      pet.style.setProperty('--eye-x', `${Math.max(-5, Math.min(5, state.faceX * 8))}px`);
-      pet.style.setProperty('--eye-y', `${Math.max(-3, Math.min(3, state.faceY * 6))}px`);
-      pet.style.setProperty('--pet-tilt', `${Math.max(-12, Math.min(12, state.vx * 2.5))}deg`);
-      pet.dataset.dragging = pointer.dragging ? 'true' : 'false';
-      pet.dataset.excited = state.mood > 0.25 ? 'true' : 'false';
-      frameRef.current = requestAnimationFrame(animate);
-    };
-
-    frameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      window.removeEventListener('pointermove', movePointer);
-      window.removeEventListener('pointerleave', leavePointer);
-
-      if (frameRef.current !== null) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, []);
-
-  const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
-    const pointer = pointerRef.current;
-    const state = stateRef.current;
-
-    pointer.dragging = true;
-    pointer.active = true;
-    pointer.x = event.clientX;
-    pointer.y = event.clientY;
-    pointer.offsetX = pointer.x - state.x;
-    pointer.offsetY = pointer.y - state.y;
-    pointer.lastX = state.x;
-    pointer.lastY = state.y;
-    pointer.lastTime = performance.now();
-    state.mood = 1;
-    event.currentTarget.setPointerCapture(event.pointerId);
-  };
-
-  const stopDrag = (event: React.PointerEvent<HTMLDivElement>) => {
-    const state = stateRef.current;
-
-    pointerRef.current.dragging = false;
-    state.homeX = state.x;
-    state.homeY = state.y;
-
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-  };
-
-  return (
-    <div
-      ref={petRef}
-      className="robot-pet"
-      aria-label="interactive robot pet"
-      role="img"
-      onPointerDown={startDrag}
-      onPointerUp={stopDrag}
-      onPointerCancel={stopDrag}
-    >
-      <svg className="robot-pet__svg" viewBox="0 0 58 66" aria-hidden="true">
-        <line className="robot-pet__antenna-stem" x1="29" y1="11" x2="29" y2="17" />
-        <circle className="robot-pet__antenna-light" cx="29" cy="8" r="3.5" />
-        <path className="robot-pet__arm robot-pet__arm--left" d="M11 36 L5 42 L8 46 L14 40" />
-        <path className="robot-pet__arm robot-pet__arm--right" d="M47 36 L53 42 L50 46 L44 40" />
-        <rect className="robot-pet__ear robot-pet__ear--left" x="10" y="27" width="4" height="13" rx="1" />
-        <rect className="robot-pet__ear robot-pet__ear--right" x="44" y="27" width="4" height="13" rx="1" />
-        <rect className="robot-pet__head" x="14" y="17" width="30" height="29" rx="3" />
-        <rect className="robot-pet__screen" x="18" y="22" width="22" height="17" rx="2" />
-        <rect className="robot-pet__screen-shine" x="20" y="24" width="5" height="2" rx="1" />
-        <rect className="robot-pet__eye robot-pet__eye--left" x="22" y="29" width="3" height="4" rx="1" />
-        <rect className="robot-pet__eye robot-pet__eye--right" x="33" y="29" width="3" height="4" rx="1" />
-        <path className="robot-pet__mouth" d="M26 36 Q29 38 32 36" />
-        <rect className="robot-pet__neck" x="26" y="45" width="6" height="3" rx="1" />
-        <rect className="robot-pet__body" x="22" y="48" width="14" height="10" rx="2" />
-        <rect className="robot-pet__core" x="27" y="51" width="4" height="4" rx="1" />
-        <rect className="robot-pet__leg robot-pet__leg--left" x="21" y="57" width="6" height="6" rx="1" />
-        <rect className="robot-pet__leg robot-pet__leg--right" x="31" y="57" width="6" height="6" rx="1" />
-      </svg>
-    </div>
-  );
-}
-
 export default function Home() {
   const projects = [
     {
@@ -607,16 +378,15 @@ export default function Home() {
           backgroundAttachment: 'fixed'
         }}
       >
-        <RobotPet />
         <div className="container mx-auto px-8 max-w-[800px] text-center z-10">
           <Typewriter />
 
           <h1 className="font-display text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white animate-slide-up animate-slide-up-delay-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-            building impactful AI<br />for the future.
+            building impactful things.
           </h1>
 
           <p className="text-xl text-gray-300 max-w-[600px] mx-auto mb-10 animate-slide-up animate-slide-up-delay-2">
-            crafting intelligent systems and innovative software that drive real-world impact and push the boundaries of what&apos;s possible.
+            crafting intelligent systems and innovative software that drive real impact and push the boundaries of what&apos;s possible.
           </p>
 
           <div className="flex gap-4 justify-center animate-slide-up animate-slide-up-delay-3">
@@ -635,7 +405,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="mb-6 text-text-secondary text-lg">
-                i am an <span className="text-text-primary font-medium">AI engineer and fullstack developer</span> driven by a singular mission: building impactful software that pushes the boundaries of innovation and solves real-world problems.
+                i am an <span className="text-text-primary font-medium">AI/ML engineer and fullstack developer</span> driven by a singular mission: building impactful software that pushes the boundaries of innovation and solves real problems.
               </p>
               <p className="mb-6 text-text-secondary text-lg">
                 from training and fine-tuning language models to architecting full-stack applications, i specialize in <span className="text-text-primary font-medium">machine learning, AI safety & red teaming, agentic systems & local ai</span>. my work spans model development, red teaming protocols, and building intelligent infrastructures that drive meaningful impact.
@@ -810,7 +580,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-text-secondary text-sm">
-            &copy; {new Date().getFullYear()} ayanda joseph. building impactful AI & innovative software.
+            &copy; {new Date().getFullYear()} ayanda joseph. building impactful things.
           </p>
         </div>
       </footer>
