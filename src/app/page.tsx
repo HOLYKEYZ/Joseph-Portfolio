@@ -332,7 +332,7 @@ export default function Home() {
       <header
         className="min-h-[100dvh] flex items-center pt-[100px] pb-24 relative overflow-hidden hero-grain"
         style={{
-          background: 'radial-gradient(120% 80% at 75% 20%, rgba(251,191,36,0.06), transparent 55%), radial-gradient(80% 60% at 10% 90%, rgba(255,255,255,0.04), transparent 60%), linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.95)), url(/image.png)',
+          background: 'radial-gradient(120% 80% at 75% 20%, rgba(251,191,36,0.06), transparent 55%), radial-gradient(80% 60% at 10% 90%, rgba(255,255,255,0.04), transparent 60%), linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.95)), url(/image.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
