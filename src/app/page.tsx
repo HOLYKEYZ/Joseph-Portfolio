@@ -177,7 +177,7 @@ export default function Home() {
       description: "Developer-first social platform built on GitHub. Share updates, ship releases, discover trending projects with real-time SSE feeds and GitHub Actions integration.",
       tags: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
       links: [
-        { href: "https://gitpulsefeed.vercel.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
+        { href: "hubfeed.netlify.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
         { href: "https://github.com/HOLYKEYZ/git-pulse", label: "source", icon: "fa-brands fa-github" }
       ]
     },
