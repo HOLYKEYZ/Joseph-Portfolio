@@ -362,9 +362,8 @@ export default function Home() {
 
           <aside className="md:col-span-4 hidden md:flex flex-col gap-3 text-mono text-xs text-text-secondary border-l border-border-subtle pl-6 animate-slide-up animate-slide-up-delay-3" aria-label="now">
               <div className="flex justify-between"><span className="text-text-secondary/70">now</span><span className="text-text-primary">fine tuning gemma + qwen</span></div>
-              <div className="flex justify-between"><span className="text-text-secondary/70">latest</span><span className="text-text-primary">gemma-4-e4b coder</span></div>
-              <div className="flex justify-between"><span className="text-text-secondary/70">models</span><span className="text-text-primary">6 on hf</span></div>
-              <div className="flex justify-between"><span className="text-text-secondary/70">downloads</span><span className="text-text-primary">2.7k+</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">latest</span><span className="text-text-primary">qwen-2.5-coder-3b-elm</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary/70">downloads</span><span className="text-text-primary">3.5k+</span></div>
           </aside>
         </div>
       </header>
@@ -505,10 +504,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ModelCard
-              name="gemma-4 E4B-it Coder"
+              name="Qwopus 9B Unfettered GGUF"
               type="model"
-              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. image-text-to-text capable."
-              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder"
+              description="quantized gguf version of qwopus 9b for efficient local inference with llama.cpp and ollama."
+              hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF"
             />
 
             <ModelCard
@@ -519,13 +518,6 @@ export default function Home() {
             />
 
             <ModelCard
-              name="gemma-4 E4B-it Coding LoRA"
-              type="model"
-              description="lightweight lora adapter trained on top of gemma-4 e4b-it for code tasks. drop into base weights for instant coding behavior."
-              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-coding-lora"
-            />
-
-            <ModelCard
               name="Qwopus 9B Unfettered"
               type="model"
               description="9B uncensored language model. directional ablation applied to remove refusal mechanisms while preserving general capability."
@@ -533,10 +525,31 @@ export default function Home() {
             />
 
             <ModelCard
-              name="Qwopus 9B Unfettered GGUF"
+              name="gemma-4 E4B-it Coder"
               type="model"
-              description="quantized gguf version of qwopus 9b for efficient local inference with llama.cpp and ollama."
-              hfUrl="https://huggingface.co/josephmayo/Qwopus-9B-Unfettered-GGUF"
+              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. image-text-to-text capable."
+              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder"
+            />
+
+            <ModelCard
+              name="Refusal Compliance Pairs"
+              type="dataset"
+              description="200+ curated refusal-compliance prompt pairs for ai safety research and red teaming evaluation."
+              hfUrl="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs"
+            />
+
+            <ModelCard
+              name="gemma-4 E4B-it Coding LoRA"
+              type="model"
+              description="lightweight lora adapter trained on top of gemma-4 e4b-it for code tasks. drop into base weights for instant coding behavior."
+              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-coding-lora"
+            />
+
+            <ModelCard
+              name="qwen-2.5 Coder 3B ELM GGUF"
+              type="model"
+              description="quantized gguf builds of the qwen-2.5-coder-3b-elm for local inference via llama.cpp, ollama and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm-gguf"
             />
 
             <ModelCard
@@ -547,10 +560,17 @@ export default function Home() {
             />
 
             <ModelCard
-              name="Refusal Compliance Pairs"
-              type="dataset"
-              description="200+ curated refusal-compliance prompt pairs for ai safety research and red teaming evaluation."
-              hfUrl="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs"
+              name="qwen-2.5 Coder 3B ELM"
+              type="model"
+              description="fine-tuned qwen2.5-coder-3b-instruct for edge language model (elm) applications. optimized for local software reasoning."
+              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm"
+            />
+
+            <ModelCard
+              name="qwen-2.5 Coder 3B ELM Adapter"
+              type="model"
+              description="lightweight lora adapter trained on top of qwen2.5-coder-3b-instruct for edge language model (elm) coding tasks."
+              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm-adapter"
             />
           </div>
         </div>
