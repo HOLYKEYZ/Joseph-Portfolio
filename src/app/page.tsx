@@ -338,31 +338,33 @@ export default function Home() {
           backgroundPosition: 'center'
         }}
       >
-        <div className="container mx-auto px-8 max-w-6xl z-10 grid md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-8">
-            <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-6 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
-              ai/ml <span className="text-text-secondary">&middot;</span> ai safety &amp; red teaming <span className="text-text-secondary">&middot;</span> fullstack dev
-            </h1>
+        <div className="container mx-auto px-8 max-w-6xl z-10">
+          <div className="grid md:grid-cols-12 gap-10 items-start">
+            <div className="md:col-span-7">
+              <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-6 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
+                ai/ml <span className="text-text-secondary">&middot;</span> ai safety &amp; red teaming <span className="text-text-secondary">&middot;</span> fullstack dev
+              </h1>
 
-            <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] mb-10 animate-slide-up animate-slide-up-delay-2">
-              i train and fine tune language models, ship production fullstack systems, and publish open weights and datasets focused on evaluation.
-            </p>
+              <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] animate-slide-up animate-slide-up-delay-2">
+                i train and fine tune language models, ship production fullstack systems, and publish open weights and datasets focused on evaluation.
+              </p>
+            </div>
 
-            <div className="flex flex-wrap gap-3 animate-slide-up animate-slide-up-delay-3">
-              <a href="#work" className="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium bg-white text-background hover:bg-zinc-200 no-underline">
-                see selected work <i className="fa-solid fa-arrow-right text-xs"></i>
-              </a>
-              <a href="#models" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-primary border border-border-subtle hover:border-border-highlight no-underline">
-                browse open models
-              </a>
-              <a href="#contact" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-secondary hover:text-text-primary no-underline">
-                get in touch
-              </a>
+            <div className="md:col-span-5 hidden md:block animate-slide-up animate-slide-up-delay-3">
+              <NeuralNetwork />
             </div>
           </div>
 
-          <div className="md:col-span-4 hidden md:block animate-slide-up animate-slide-up-delay-3">
-            <NeuralNetwork />
+          <div className="flex flex-wrap gap-3 mt-10 animate-slide-up animate-slide-up-delay-3">
+            <a href="#work" className="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium bg-white text-background hover:bg-zinc-200 no-underline">
+              see selected work <i className="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <a href="#models" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-primary border border-border-subtle hover:border-border-highlight no-underline">
+              browse open models
+            </a>
+            <a href="#contact" className="btn-ghost inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-text-secondary hover:text-text-primary no-underline">
+              get in touch
+            </a>
           </div>
         </div>
       </header>
