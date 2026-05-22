@@ -331,7 +331,7 @@ export default function Home() {
       <main id="main">
       {/* Hero Section */}
       <header
-        className="min-h-[100dvh] flex items-center pt-[100px] pb-24 relative overflow-hidden hero-grain"
+        className="min-h-[100dvh] flex items-center pt-[100px] pb-12 relative overflow-hidden hero-grain"
         style={{
           background: 'linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.95)), url(/image.jpg)',
           backgroundSize: 'cover',
@@ -341,11 +341,15 @@ export default function Home() {
         <div className="container mx-auto px-8 max-w-6xl z-10">
           <div className="grid md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-7">
-              <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-6 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
+              <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-4 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
                 ai/ml <span className="text-text-secondary">&middot;</span> fullstack dev
               </h1>
 
-              <div className="flex flex-wrap gap-3 mb-8 animate-slide-up animate-slide-up-delay-2">
+              <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] mb-5 animate-slide-up animate-slide-up-delay-2">
+                i train and fine tune language models, ship production fullstack systems, and publish open weights and datasets focused on evaluation.
+              </p>
+
+              <div className="flex flex-wrap gap-3 animate-slide-up animate-slide-up-delay-3">
                 <a href="#work" className="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium bg-white text-background hover:bg-zinc-200 no-underline">
                   see selected work <i className="fa-solid fa-arrow-right text-xs"></i>
                 </a>
@@ -356,10 +360,6 @@ export default function Home() {
                   get in touch
                 </a>
               </div>
-
-              <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] animate-slide-up animate-slide-up-delay-3">
-                i train and fine tune language models, ship production fullstack systems, and publish open weights and datasets focused on evaluation.
-              </p>
             </div>
 
             <div className="md:col-span-5 hidden md:block animate-slide-up animate-slide-up-delay-3">
