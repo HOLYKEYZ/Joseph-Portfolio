@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import NeuralNetwork from '@/components/NeuralNetwork';
 
 // Skill Tag component
 function SkillTag({ children }: { children: React.ReactNode }) {
@@ -360,11 +361,9 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="md:col-span-4 hidden md:flex flex-col gap-3 text-mono text-xs text-text-secondary border-l border-border-subtle pl-6 animate-slide-up animate-slide-up-delay-3" aria-label="now">
-              <div className="flex justify-between"><span className="text-text-secondary/70">now</span><span className="text-text-primary">fine tuning gemma + qwen</span></div>
-              <div className="flex justify-between"><span className="text-text-secondary/70">latest</span><span className="text-text-primary">qwen-2.5-coder-3b-elm</span></div>
-              <div className="flex justify-between"><span className="text-text-secondary/70">downloads</span><span className="text-text-primary">3.5k+</span></div>
-          </aside>
+          <div className="md:col-span-4 hidden md:block animate-slide-up animate-slide-up-delay-3">
+            <NeuralNetwork />
+          </div>
         </div>
       </header>
 
@@ -557,6 +556,13 @@ export default function Home() {
               type="model"
               description="0.5B uncensored variant of qwen2.5, tuned for edge deployment and resource-constrained environments."
               hfUrl="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered"
+            />
+
+            <ModelCard
+              name="Qwen2.5 Coder 1.5B Forge SLM"
+              type="model"
+              description="compact 1.5B parameter coding model forged for high-throughput local inference and edge deployment."
+              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-Coder-1.5B-Forge-SLM"
             />
 
             <ModelCard
