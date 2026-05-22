@@ -416,11 +416,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <SkillCard icon="fa-solid fa-weight-hanging" title="model optimization &amp; deployment">
-              <SkillTag>quantization (GGUF / GPTQ)</SkillTag>
-              <SkillTag>llama.cpp / ollama</SkillTag>
-              <SkillTag>vllm / onnx</SkillTag>
-              <SkillTag>unsloth / axolotl</SkillTag>
-              <SkillTag>lm studio</SkillTag>
+              <SkillTag>LoRA / QLoRA</SkillTag>
+              <SkillTag>fine-tuning</SkillTag>
+              <SkillTag>DPO</SkillTag>
+              <SkillTag>ORPO</SkillTag>
+              <SkillTag>dataset curation</SkillTag>
+              <SkillTag>quantization (GGUF)</SkillTag>
             </SkillCard>
 
             <SkillCard icon="fa-solid fa-mask" title="red teaming &amp; alignment">
