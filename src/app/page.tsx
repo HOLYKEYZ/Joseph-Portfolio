@@ -331,7 +331,7 @@ export default function Home() {
       <main id="main">
       {/* Hero Section */}
       <header
-        className="min-h-[100dvh] flex items-center pt-[100px] pb-12 relative overflow-hidden hero-grain"
+        className="min-h-[100dvh] flex items-end pt-[100px] pb-16 relative overflow-hidden hero-grain"
         style={{
           background: 'linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.95)), url(/image.jpg)',
           backgroundSize: 'cover',
