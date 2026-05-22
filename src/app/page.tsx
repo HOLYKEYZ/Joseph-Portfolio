@@ -545,7 +545,7 @@ export default function Home() {
             <ModelCard
               name="gemma-4 E4B-it Coder"
               type="model"
-              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. image-text-to-text capable."
+              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. coding performance increased ~25+%. image-text-to-text capable."
               hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder"
             />
 
