@@ -340,7 +340,7 @@ export default function Home() {
       >
         <div className="container mx-auto px-8 max-w-6xl z-10">
           <div className="grid md:grid-cols-12 gap-10 items-start">
-            <div className="md:col-span-7">
+            <div className="md:col-span-7 md:pt-24">
               <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-4 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
                 ai/ml <span className="text-text-secondary">&middot;</span> fullstack dev
               </h1>
@@ -415,6 +415,22 @@ export default function Home() {
           <h2 className="text-4xl mb-16 text-center font-display">tech arsenal</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <SkillCard icon="fa-solid fa-weight-hanging" title="model optimization &amp; deployment">
+              <SkillTag>quantization (GGUF / GPTQ)</SkillTag>
+              <SkillTag>llama.cpp / ollama</SkillTag>
+              <SkillTag>vllm / onnx</SkillTag>
+              <SkillTag>unsloth / axolotl</SkillTag>
+              <SkillTag>lm studio</SkillTag>
+            </SkillCard>
+
+            <SkillCard icon="fa-solid fa-mask" title="red teaming &amp; alignment">
+              <SkillTag>refusal ablation</SkillTag>
+              <SkillTag>jailbreak research</SkillTag>
+              <SkillTag>adversarial testing</SkillTag>
+              <SkillTag>safety evaluation</SkillTag>
+              <SkillTag>compliance pairs</SkillTag>
+            </SkillCard>
+
             <SkillCard icon="fa-solid fa-microchip" title="systems & core">
               <SkillTag>C</SkillTag>
               <SkillTag>holy C</SkillTag>
