@@ -6,8 +6,6 @@ import * as THREE from 'three';
 export default function NeuralNetwork() {
   const containerRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number>(0);
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const targetMouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -24,18 +22,18 @@ export default function NeuralNetwork() {
     camera.position.z = 22;
 
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: false,
       alpha: true,
     });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     renderer.domElement.style.display = 'block';
     container.appendChild(renderer.domElement);
 
     // --- Neural Network Particles ---
-    const particleCount = 150;
+    const particleCount = 96;
     const positions = new Float32Array(particleCount * 3);
     const basePositions: THREE.Vector3[] = [];
 
@@ -77,39 +75,26 @@ export default function NeuralNetwork() {
       depthWrite: false,
     });
 
-    const lineGeometries: THREE.BufferGeometry[] = [];
-    const lines: THREE.Line[] = [];
-
-    function updateConnections() {
-      lines.forEach((l) => scene.remove(l));
-      lineGeometries.forEach((g) => g.dispose());
-      lines.length = 0;
-      lineGeometries.length = 0;
-
-      const arr = particleGeo.attributes.position.array as Float32Array;
-      for (let i = 0; i < particleCount; i++) {
-        let connections = 0;
-        for (let j = i + 1; j < particleCount; j++) {
-          const dx = arr[i * 3] - arr[j * 3];
-          const dy = arr[i * 3 + 1] - arr[j * 3 + 1];
-          const dz = arr[i * 3 + 2] - arr[j * 3 + 2];
-          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-          if (dist < 5.2 && connections < 2) {
-            const geo = new THREE.BufferGeometry().setFromPoints([
-              new THREE.Vector3(arr[i * 3], arr[i * 3 + 1], arr[i * 3 + 2]),
-              new THREE.Vector3(arr[j * 3], arr[j * 3 + 1], arr[j * 3 + 2]),
-            ]);
-            const line = new THREE.Line(geo, lineMat);
-            scene.add(line);
-            lineGeometries.push(geo);
-            lines.push(line);
-            connections++;
-          }
+    const connectionPairs: [number, number][] = [];
+    for (let i = 0; i < particleCount; i++) {
+      let connections = 0;
+      for (let j = i + 1; j < particleCount; j++) {
+        const dx = positions[i * 3] - positions[j * 3];
+        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        if (dist < 5.2 && connections < 2) {
+          connectionPairs.push([i, j]);
+          connections++;
         }
       }
     }
 
-    updateConnections();
+    const linePositions = new Float32Array(connectionPairs.length * 6);
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    const lineSegments = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(lineSegments);
 
     // --- Ambient Glow Core ---
     const glowGeo = new THREE.SphereGeometry(7, 32, 32);
@@ -140,17 +125,20 @@ export default function NeuralNetwork() {
       }
       particleGeo.attributes.position.needsUpdate = true;
 
-      // Update connections every 4 frames
-      if (Math.floor(time * 100) % 4 === 0) {
-        updateConnections();
+      for (let i = 0; i < connectionPairs.length; i++) {
+        const [a, b] = connectionPairs[i];
+        linePositions[i * 6] = arr[a * 3];
+        linePositions[i * 6 + 1] = arr[a * 3 + 1];
+        linePositions[i * 6 + 2] = arr[a * 3 + 2];
+        linePositions[i * 6 + 3] = arr[b * 3];
+        linePositions[i * 6 + 4] = arr[b * 3 + 1];
+        linePositions[i * 6 + 5] = arr[b * 3 + 2];
       }
+      lineGeo.attributes.position.needsUpdate = true;
 
-      // Rotate whole system slowly
-      mouseRef.current.x += (targetMouseRef.current.x - mouseRef.current.x) * 0.04;
-      mouseRef.current.y += (targetMouseRef.current.y - mouseRef.current.y) * 0.04;
-
-      particles.rotation.y = time * 0.15 + mouseRef.current.x * 0.4;
-      particles.rotation.x = mouseRef.current.y * 0.25;
+      particles.rotation.y = time * 0.15;
+      particles.rotation.x = Math.sin(time * 0.12) * 0.12;
+      lineSegments.rotation.copy(particles.rotation);
       glowSphere.rotation.y = time * 0.08;
       glowSphere.rotation.x = Math.sin(time * 0.1) * 0.1;
 
@@ -158,18 +146,6 @@ export default function NeuralNetwork() {
     }
 
     animate();
-
-    // Mouse tracking
-    function onMouseMove(e: MouseEvent) {
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      targetMouseRef.current.x = ((e.clientX - cx) / (rect.width / 2));
-      targetMouseRef.current.y = ((e.clientY - cy) / (rect.height / 2));
-    }
-
-    window.addEventListener('mousemove', onMouseMove);
 
     function onResize() {
       if (!container || !camera || !renderer) return;
@@ -183,15 +159,14 @@ export default function NeuralNetwork() {
     window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(frameRef.current);
 
-      lines.forEach((l) => scene.remove(l));
-      lineGeometries.forEach((g) => g.dispose());
+      scene.remove(lineSegments);
       scene.remove(particles);
       scene.remove(glowSphere);
       particleGeo.dispose();
+      lineGeo.dispose();
       particleMat.dispose();
       lineMat.dispose();
       glowGeo.dispose();
@@ -207,7 +182,7 @@ export default function NeuralNetwork() {
     <div
       ref={containerRef}
       className="w-full h-[340px] md:h-[480px]"
-      style={{ cursor: 'crosshair' }}
+      style={{ pointerEvents: 'none' }}
     />
   );
 }
