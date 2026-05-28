@@ -108,10 +108,25 @@ function ModelCard({
   useEffect(() => {
     const fetchDownloads = async () => {
       try {
-        // Extract repo path correctly based on type
-        const repoPath = type === 'dataset'
-          ? hfUrl.split('huggingface.co/datasets/')[1]
-          : hfUrl.split('huggingface.co/')[1];
+        // Robustly extract repo path from Hugging Face URL
+        let repoPath: string | undefined;
+        try {
+          const url = new URL(hfUrl);
+          // Remove leading slash and 'datasets/' prefix if type is dataset
+          let path = url.pathname.replace(/^\/+/, '');
+          if (type === 'dataset' && path.startsWith('datasets/')) {
+            path = path.slice('datasets/'.length);
+          }
+          repoPath = path || undefined;
+        } catch {
+          repoPath = undefined;
+        }
+
+        if (!repoPath) {
+          setLoading(false);
+          return;
+        }
+
         const apiUrl = `https://huggingface.co/api/${type}s/${repoPath}`;
         
         const response = await fetch(apiUrl);
