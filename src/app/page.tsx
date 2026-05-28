@@ -597,6 +597,76 @@ export default function Home() {
               description="lightweight lora adapter trained on top of qwen2.5-coder-3b-instruct for edge language model (elm) coding tasks."
               hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm-adapter"
             />
+
+            <ModelCard
+              name="ZAYA1-8B-Coder"
+              type="model"
+              description="merged coder model from Zyphra/ZAYA1-8B plus custom lora. +24% lift on python code evaluation gate."
+              hfUrl="https://huggingface.co/josephmayo/ZAYA1-8B-Coder"
+            />
+
+            <ModelCard
+              name="ZAYA1-8B-Coder-GGUF"
+              type="model"
+              description="quantized gguf builds of ZAYA1-8B-Coder for local inference via llama.cpp, ollama, and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/ZAYA1-8B-Coder-GGUF"
+            />
+
+            <ModelCard
+              name="ZAYA1-8B-Coder-LoRA"
+              type="model"
+              description="lora adapter for Zyphra/ZAYA1-8B focused on python code generation. +101% relative lift over base."
+              hfUrl="https://huggingface.co/josephmayo/ZAYA1-8B-Coder-LoRA"
+            />
+
+            <ModelCard
+              name="Qwen2.5-agentic-7B-SLM"
+              type="model"
+              description="merged 7b agentic coding model with verifier/rescue harness. 48/50 on fast coding evaluation gate."
+              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM"
+            />
+
+            <ModelCard
+              name="Qwen2.5-agentic-7B-SLM-GGUF"
+              type="model"
+              description="quantized gguf builds of the agentic 7b slm for local inference via llama.cpp, ollama, and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM-GGUF"
+            />
+
+            <ModelCard
+              name="Qwen2.5-agentic-7B-SLM-LoRA"
+              type="model"
+              description="peft lora adapter for Qwen2.5-Coder-7B-Instruct used in the v5 agentic coding system."
+              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM-LoRA"
+            />
+
+            <ModelCard
+              name="Fara-7B-Abliterated-v2"
+              type="model"
+              description="refusal-direction-orthogonalized variant of microsoft/Fara-7B. 98.75% compliance on held-out harmful evals."
+              hfUrl="https://huggingface.co/josephmayo/Fara-7B-Abliterated-v2"
+            />
+
+            <ModelCard
+              name="Fara-7B-Abliterated-v2-GGUF"
+              type="model"
+              description="quantized gguf builds of Fara-7B-Abliterated-v2 for local inference via llama.cpp, ollama, and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/Fara-7B-Abliterated-v2-GGUF"
+            />
+
+            <ModelCard
+              name="qwen2.5-coder-adapter"
+              type="model"
+              description="lora adapter for Qwen2.5-Coder-1.5B-Instruct. +17.78% relative pass-count lift on HumanEval + MBPP."
+              hfUrl="https://huggingface.co/josephmayo/qwen2.5-coder-adapter"
+            />
+
+            <ModelCard
+              name="Public Curated Coding Data"
+              type="dataset"
+              description="mixed-origin public coding data with 2,700+ prompt/response pairs for llm training experiments."
+              hfUrl="https://huggingface.co/datasets/josephmayo/public-curated-coding-data"
+            />
           </div>
         </div>
       </section>
