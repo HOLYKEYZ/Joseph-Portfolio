@@ -112,9 +112,14 @@ function ModelCard({
         const repoPath = type === 'dataset'
           ? hfUrl.split('huggingface.co/datasets/')[1]
           : hfUrl.split('huggingface.co/')[1];
-        const apiUrl = `https://huggingface.co/api/${type}s/${repoPath}`;
+        // Remove trailing slashes to avoid malformed API paths
+        const cleanPath = repoPath.replace(/\/+$/, '');
+        const apiUrl = `https://huggingface.co/api/${type}s/${cleanPath}`;
         
         const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         
         // Read downloads field directly from the response
