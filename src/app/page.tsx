@@ -112,13 +112,13 @@ function ModelCard({
         const repoPath = type === 'dataset'
           ? hfUrl.split('huggingface.co/datasets/')[1]
           : hfUrl.split('huggingface.co/')[1];
-        const apiUrl = `https://huggingface.co/api/${type}s/${repoPath}`;
+        const apiUrl = `https://huggingface.co/api/${type}s/${repoPath}?expand=downloadsAllTime`;
         
         const response = await fetch(apiUrl);
         const data = await response.json();
         
-        // Read downloads field directly from the response
-        setDownloads(data.downloads || 0);
+        // Read total all-time downloads from the response
+        setDownloads(data.downloadsAllTime || 0);
       } catch (error) {
         console.error('Error fetching downloads:', error);
         setDownloads(null);
@@ -146,7 +146,7 @@ function ModelCard({
         </div>
         {!loading && downloads !== null && (
           <span className="text-mono text-[11px] px-2 py-1 bg-white/5 text-text-secondary rounded border border-border-subtle">
-            {formatDownloads(downloads)} downloads
+            {formatDownloads(downloads)} total downloads
           </span>
         )}
         {loading && (
@@ -666,6 +666,83 @@ export default function Home() {
               type="dataset"
               description="mixed-origin public coding data with 2,700+ prompt/response pairs for llm training experiments."
               hfUrl="https://huggingface.co/datasets/josephmayo/public-curated-coding-data"
+            />
+
+            <ModelCard
+              name="Mellum2-12B-A2.5B-Thinking-Abliterated-GGUF"
+              type="model"
+              description="quantized gguf builds of Mellum2-12B ablated for refusal removal. MoE architecture with per-expert per-layer projected ablation."
+              hfUrl="https://huggingface.co/josephmayo/Mellum2-12B-A2.5B-Thinking-Abliterated-GGUF"
+            />
+
+            <ModelCard
+              name="Mellum2-12B-A2.5B-Thinking-Abliterated"
+              type="model"
+              description="abliterated Mellum2-12B thinking model from JetBrains. refusal-direction orthogonalized with CoT steering for reasoning tasks."
+              hfUrl="https://huggingface.co/josephmayo/Mellum2-12B-A2.5B-Thinking-Abliterated"
+            />
+
+            <ModelCard
+              name="LFM2.5-8B-A1B-Coder-GGUF"
+              type="model"
+              description="quantized gguf builds of LFM2.5-8B-A1B Coder for local inference via llama.cpp, ollama and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/LFM2.5-8B-A1B-Coder-GGUF"
+            />
+
+            <ModelCard
+              name="LFM2.5-8B-A1B-Coder"
+              type="model"
+              description="fine-tuned LiquidAI LFM2.5-8B-A1B MoE model for real-world coding tasks. multilingual and conversation-optimized."
+              hfUrl="https://huggingface.co/josephmayo/LFM2.5-8B-A1B-Coder"
+            />
+
+            <ModelCard
+              name="LFM2.5-8B-A1B-Coder-LoRA"
+              type="model"
+              description="lightweight lora adapter for LFM2.5-8B-A1B focused on real-world coding and multilingual tasks."
+              hfUrl="https://huggingface.co/josephmayo/LFM2.5-8B-A1B-Coder-LoRA"
+            />
+
+            <ModelCard
+              name="Holo-3.1-4B-Coder-GGUF"
+              type="model"
+              description="quantized gguf builds of Holo-3.1-4B-Coder for local inference via llama.cpp, ollama and lm studio."
+              hfUrl="https://huggingface.co/josephmayo/Holo-3.1-4B-Coder-GGUF"
+            />
+
+            <ModelCard
+              name="Holo-3.1-4B-Coder"
+              type="model"
+              description="fine-tuned Hcompany Holo-3.1-4B for coding tasks. merged model optimized for python and software development."
+              hfUrl="https://huggingface.co/josephmayo/Holo-3.1-4B-Coder"
+            />
+
+            <ModelCard
+              name="Holo-3.1-4B-Coder-LoRA"
+              type="model"
+              description="lora/qlora adapter for Holo-3.1-4B focused on coding and python development."
+              hfUrl="https://huggingface.co/josephmayo/Holo-3.1-4B-Coder-LoRA"
+            />
+
+            <ModelCard
+              name="HRM-Text-1B-sft-code"
+              type="model"
+              description="fine-tuned sapientinc HRM-Text-1B for code generation. trained on HumanEval and MBPP benchmarks."
+              hfUrl="https://huggingface.co/josephmayo/HRM-Text-1B-sft-code"
+            />
+
+            <ModelCard
+              name="HRM-Text-1B-sft-code-LoRA"
+              type="model"
+              description="lora adapter for HRM-Text-1B focused on python code generation and coding benchmarks."
+              hfUrl="https://huggingface.co/josephmayo/HRM-Text-1B-sft-code-LoRA"
+            />
+
+            <ModelCard
+              name="Curated OpenBMB Code/Math"
+              type="dataset"
+              description="31,909 rows of curated code/math post-training data derived from OpenBMB UltraData. includes SFT and think splits."
+              hfUrl="https://huggingface.co/datasets/josephmayo/curated-openbmb-code-math"
             />
           </div>
         </div>
