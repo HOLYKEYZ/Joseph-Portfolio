@@ -21,8 +21,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ayanda joseph \u2014 ml engineer & ai safety research",
-  description: "ml engineering, ai safety and red teaming research, and the systems in between. trained models on hugging face, production work shipped, honest evaluations only.",
+  title: "ayanda joseph \u2014 ml engineer",
+  description: "ml engineering, red teaming research, and the systems in between. trained models on hugging face, production work shipped, honest evaluations only.",
 };
 
 export default function RootLayout({

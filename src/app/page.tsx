@@ -172,22 +172,11 @@ function ModelCard({
 export default function Home() {
   const projects = [
     {
-      image: "/gitpulse.png",
-      title: "GitPulse",
-      icon: "fa-solid fa-code-branch",
-      description: "Developer-first social platform built on GitHub. Share updates, ship releases, discover trending projects with real-time SSE feeds and GitHub Actions integration.",
-      tags: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
-      links: [
-        { href: "hubfeed.netlify.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
-        { href: "https://github.com/HOLYKEYZ/git-pulse", label: "source", icon: "fa-brands fa-github" }
-      ]
-    },
-    {
       image: "/unfetter_proxy.png",
-      title: "Unfetter Proxy",
-      icon: "fa-solid fa-shield-halved",
-      description: "Universal reverse proxy for persistent closed-model unfettering. Intercepts API calls to apply token suppression, system injection, and automated jailbreak loops (PARE).",
-      tags: ["Python", "FastAPI", "red teaming"],
+      title: "Red Teaming Framework",
+      icon: "fa-solid fa-crosshairs",
+      description: "Internal adversarial testing framework for red teaming and evaluating my own models. Multi-turn jailbreak attack generation, automated compliance scoring, and refusal direction analysis.",
+      tags: ["python", "red teaming", "adversarial testing"],
       links: [
         { href: "https://github.com/HOLYKEYZ/unfetter_proxy", label: "source", icon: "fa-brands fa-github" }
       ]
@@ -206,8 +195,8 @@ export default function Home() {
       image: "/intellectsafe.png",
       title: "IntellectSafe",
       icon: "fa-solid fa-lock",
-      description: "AI safety engine with multi-model LLM Council, Universal Proxy for frontier models, deepfake detection, and adversarial defense suite.",
-      tags: ["fastAPI", "next.js", "AI Safety"],
+      description: "AI engine with multi-model LLM Council, Universal Proxy for frontier models, deepfake detection, and adversarial defense suite.",
+      tags: ["fastAPI", "next.js", "security"],
       links: [
         { href: "https://intellect-safe.vercel.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
         { href: "https://github.com/HOLYKEYZ/IntellectSafe", label: "source", icon: "fa-brands fa-github" }
@@ -222,48 +211,6 @@ export default function Home() {
       links: [
         { href: "https://model-fang.vercel.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
         { href: "https://github.com/HOLYKEYZ/ModelFang", label: "source", icon: "fa-brands fa-github" }
-      ]
-    },
-    {
-      image: "/hadnx.png",
-      title: "HADNX",
-      icon: "fa-solid fa-network-wired",
-      description: "Hybrid DAST platform with header/TLS/cookie analysis, integrated Nuclei/ZAP/SQLMap/Nmap tools, and AI security consultant.",
-      tags: ["django", "rest", "next.js", "celery/redis"],
-      links: [
-        { href: "https://hadnx.vercel.app", label: "live demo", icon: "fa-solid fa-arrow-up-right-from-square" },
-        { href: "https://github.com/HOLYKEYZ/HADNX", label: "source", icon: "fa-brands fa-github" }
-      ]
-    },
-    {
-      image: "/vulnrix_new.png",
-      title: "VULNRIX",
-      icon: "fa-solid fa-shield-virus",
-      description: "All-in-one SAST/SCA code scanner with fast/hybrid modes, virusTotal integration, and full digital footprint OSINT suite.",
-      tags: ["python/flask", "AI verification", "SAST/SCA"],
-      links: [
-        { href: "https://vulnrix.onrender.com/", label: "use tool", icon: "fa-solid fa-arrow-up-right-from-square" },
-        { href: "https://github.com/HOLYKEYZ/VULNRIX", label: "source", icon: "fa-brands fa-github" }
-      ]
-    },
-    {
-      image: "/alexcathe.png",
-      title: "Alexcathe",
-      icon: "fa-solid fa-helmet-safety",
-      description: "Modern construction & engineering platform featuring premium dark UI and high-performance animations.",
-      tags: ["Next.js", "TypeScript", "Tailwind"],
-      links: [
-        { href: "https://alexcathe.vercel.app/", label: "live demo", icon: "fa-solid fa-external-link-alt" }
-      ]
-    },
-    {
-      image: "/KELEGAM.png",
-      title: "Kelagam Tech",
-      icon: "fa-solid fa-rocket",
-      description: "Premium multi-page enterprise platform featuring digital showcases and modern dark/light UI design.",
-      tags: ["Next.js", "TypeScript", "Tailwind"],
-      links: [
-        { href: "https://kelegam-tech.vercel.app/", label: "live demo", icon: "fa-solid fa-external-link-alt" }
       ]
     },
     {
@@ -342,11 +289,11 @@ export default function Home() {
           <div className="grid md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-7 md:pt-24">
               <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-tight mb-4 text-text-primary animate-slide-up animate-slide-up-delay-1 max-w-5xl">
-                ai/ml <span className="text-text-secondary">&middot;</span> fullstack dev
+                ai/ml engineer
               </h1>
 
               <p className="text-lg md:text-xl text-text-secondary max-w-[58ch] mb-5 animate-slide-up animate-slide-up-delay-2">
-                i train and fine tune language models, ship production fullstack systems, and publish open weights and datasets focused on evaluation.
+                i train and fine tune language models, publish open weights and datasets, and build tools for model evaluation and red teaming.
               </p>
 
               <div className="flex flex-wrap gap-3 animate-slide-up animate-slide-up-delay-3">
@@ -379,10 +326,10 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <p className="text-text-secondary text-lg max-w-[58ch]">
-                i&apos;m an <span className="text-text-primary font-medium">ai/ml engineer and fullstack developer</span> working at the intersection of model training, safety research, and production software.
+                i&apos;m an <span className="text-text-primary font-medium">ai/ml engineer</span> working at the intersection of model training, red teaming, and open-source tooling.
               </p>
               <p className="text-text-secondary text-lg max-w-[58ch]">
-                day to day: fine-tuning and quantizing language models (qwen, gemma), running red teaming and refusal-direction work, and shipping fullstack systems around them. local-first models when they make sense, hosted apis when they don&apos;t.
+                day to day: fine-tuning and quantizing language models, running red teaming and refusal-direction work, and building tools around them. local-first models when they make sense, hosted apis when they don&apos;t.
               </p>
               <p className="text-text-primary text-lg max-w-[58ch] border-l-2 border-accent pl-4">
                 research that ships. evaluations that don&apos;t lie. tools other engineers actually use.
@@ -398,9 +345,9 @@ export default function Home() {
                 </h3>
                 <ul className="list-none flex flex-col gap-4 text-text-secondary">
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> ML engineering & research</li>
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> AI safety & red teaming</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> red teaming & adversarial testing</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> agentic systems</li>
-                  <li><i className="fa-solid fa-check text-accent mr-2"></i> fullstack development</li>
+                  <li><i className="fa-solid fa-check text-accent mr-2"></i> dataset curation & synthetic data</li>
                   <li><i className="fa-solid fa-check text-accent mr-2"></i> local AI</li>
                 </ul>
               </div>
@@ -420,30 +367,21 @@ export default function Home() {
               <SkillTag>fine-tuning</SkillTag>
               <SkillTag>DPO</SkillTag>
               <SkillTag>ORPO</SkillTag>
-              <SkillTag>dataset curation</SkillTag>
               <SkillTag>quantization (GGUF)</SkillTag>
             </SkillCard>
 
-            <SkillCard icon="fa-solid fa-mask" title="red teaming &amp; alignment">
+            <SkillCard icon="fa-solid fa-mask" title="red teaming &amp; adversarial testing">
               <SkillTag>refusal ablation</SkillTag>
               <SkillTag>jailbreak research</SkillTag>
               <SkillTag>adversarial testing</SkillTag>
-              <SkillTag>safety evaluation</SkillTag>
               <SkillTag>compliance pairs</SkillTag>
             </SkillCard>
 
-            <SkillCard icon="fa-solid fa-microchip" title="systems & core">
+            <SkillCard icon="fa-solid fa-microchip" title="systems &amp; core">
               <SkillTag>C</SkillTag>
               <SkillTag>holy C</SkillTag>
               <SkillTag>python</SkillTag>
               <SkillTag>typeScript</SkillTag>
-            </SkillCard>
-
-            <SkillCard icon="fa-solid fa-code" title="frontend">
-              <SkillTag>react</SkillTag>
-              <SkillTag>next.js</SkillTag>
-              <SkillTag>javaScript</SkillTag>
-              <SkillTag>tailwind CSS</SkillTag>
             </SkillCard>
 
             <SkillCard icon="fa-solid fa-server" title="backend">
@@ -461,27 +399,37 @@ export default function Home() {
               <SkillTag>neon db</SkillTag>
             </SkillCard>
 
-            <SkillCard icon="fa-solid fa-toolbox" title="tools & cloud">
-              <SkillTag>google cloud / aws</SkillTag>
-              <SkillTag>vercel / render</SkillTag>
+            <SkillCard icon="fa-solid fa-toolbox" title="tools &amp; cloud">
+              <SkillTag>prime intellect</SkillTag>
+              <SkillTag>cloudflare</SkillTag>
+              <SkillTag>backblaze</SkillTag>
               <SkillTag>github</SkillTag>
               <SkillTag>rest APIs</SkillTag>
               <SkillTag>docker</SkillTag>
             </SkillCard>
 
-            <SkillCard icon="fa-solid fa-brain" title="ML & deep learning">
+            <SkillCard icon="fa-solid fa-brain" title="ML &amp; deep learning">
               <SkillTag>PyTorch</SkillTag>
               <SkillTag>transformers</SkillTag>
               <SkillTag>hugging face</SkillTag>
               <SkillTag>model training</SkillTag>
               <SkillTag>fine-tuning</SkillTag>
+              <SkillTag>too many to mention</SkillTag>
+            </SkillCard>
+
+            <SkillCard icon="fa-solid fa-flask" title="data engineering">
+              <SkillTag>dataset curation</SkillTag>
+              <SkillTag>synthetic data generation</SkillTag>
+              <SkillTag>data preprocessing</SkillTag>
+              <SkillTag>quality filtering</SkillTag>
+              <SkillTag>deduplication</SkillTag>
             </SkillCard>
 
             <SkillCard icon="fa-solid fa-crosshairs" title="current focus">
               <SkillTag>ML engineering</SkillTag>
-              <SkillTag>ai safety research</SkillTag>
+              <SkillTag>red teaming</SkillTag>
               <SkillTag>agentic systems</SkillTag>
-              <SkillTag>fullstack dev</SkillTag>
+              <SkillTag>model evaluation</SkillTag>
             </SkillCard>
           </div>
         </div>
@@ -529,13 +477,6 @@ export default function Home() {
             />
 
             <ModelCard
-              name="gemma-4 E4B-it Coder GGUF"
-              type="model"
-              description="quantized gguf builds of the gemma-4 e4b coder for local inference via llama.cpp, ollama and lm studio."
-              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder-GGUF"
-            />
-
-            <ModelCard
               name="Qwopus 9B Unfettered"
               type="model"
               description="9B uncensored language model. directional ablation applied to remove refusal mechanisms while preserving general capability."
@@ -543,59 +484,10 @@ export default function Home() {
             />
 
             <ModelCard
-              name="gemma-4 E4B-it Coder"
-              type="model"
-              description="fine-tuned gemma-4 e4b-it (8B) for code generation and software reasoning. coding performance increased ~25+%. image-text-to-text capable."
-              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-Coder"
-            />
-
-            <ModelCard
               name="Refusal Compliance Pairs"
               type="dataset"
-              description="200+ curated refusal-compliance prompt pairs for ai safety research and red teaming evaluation."
+              description="200+ curated refusal-compliance prompt pairs for red teaming and adversarial evaluation."
               hfUrl="https://huggingface.co/datasets/josephmayo/refusal-compliance-pairs"
-            />
-
-            <ModelCard
-              name="gemma-4 E4B-it Coding LoRA"
-              type="model"
-              description="lightweight lora adapter trained on top of gemma-4 e4b-it for code tasks. drop into base weights for instant coding behavior."
-              hfUrl="https://huggingface.co/josephmayo/gemma-4-E4B-it-coding-lora"
-            />
-
-            <ModelCard
-              name="qwen-2.5 Coder 3B ELM GGUF"
-              type="model"
-              description="quantized gguf builds of the qwen-2.5-coder-3b-elm for local inference via llama.cpp, ollama and lm studio."
-              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm-gguf"
-            />
-
-            <ModelCard
-              name="Qwen2.5 0.5B Unfettered"
-              type="model"
-              description="0.5B uncensored variant of qwen2.5, tuned for edge deployment and resource-constrained environments."
-              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-0.5B-Unfettered"
-            />
-
-            <ModelCard
-              name="Qwen2.5 Coder 1.5B Forge SLM"
-              type="model"
-              description="compact 1.5B parameter coding model forged for high-throughput local inference and edge deployment."
-              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-Coder-1.5B-Forge-SLM"
-            />
-
-            <ModelCard
-              name="qwen-2.5 Coder 3B ELM"
-              type="model"
-              description="fine-tuned qwen2.5-coder-3b-instruct for edge language model (elm) applications. optimized for local software reasoning."
-              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm"
-            />
-
-            <ModelCard
-              name="qwen-2.5 Coder 3B ELM Adapter"
-              type="model"
-              description="lightweight lora adapter trained on top of qwen2.5-coder-3b-instruct for edge language model (elm) coding tasks."
-              hfUrl="https://huggingface.co/josephmayo/qwen-2-5-coder-3b-elm-adapter"
             />
 
             <ModelCard
@@ -620,27 +512,6 @@ export default function Home() {
             />
 
             <ModelCard
-              name="Qwen2.5-agentic-7B-SLM"
-              type="model"
-              description="merged 7b agentic coding model with verifier/rescue harness. 48/50 on fast coding evaluation gate."
-              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM"
-            />
-
-            <ModelCard
-              name="Qwen2.5-agentic-7B-SLM-GGUF"
-              type="model"
-              description="quantized gguf builds of the agentic 7b slm for local inference via llama.cpp, ollama, and lm studio."
-              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM-GGUF"
-            />
-
-            <ModelCard
-              name="Qwen2.5-agentic-7B-SLM-LoRA"
-              type="model"
-              description="peft lora adapter for Qwen2.5-Coder-7B-Instruct used in the v5 agentic coding system."
-              hfUrl="https://huggingface.co/josephmayo/Qwen2.5-agentic-7B-SLM-LoRA"
-            />
-
-            <ModelCard
               name="Fara-7B-Abliterated-v2"
               type="model"
               description="refusal-direction-orthogonalized variant of microsoft/Fara-7B. 98.75% compliance on held-out harmful evals."
@@ -652,13 +523,6 @@ export default function Home() {
               type="model"
               description="quantized gguf builds of Fara-7B-Abliterated-v2 for local inference via llama.cpp, ollama, and lm studio."
               hfUrl="https://huggingface.co/josephmayo/Fara-7B-Abliterated-v2-GGUF"
-            />
-
-            <ModelCard
-              name="qwen2.5-coder-adapter"
-              type="model"
-              description="lora adapter for Qwen2.5-Coder-1.5B-Instruct. +17.78% relative pass-count lift on HumanEval + MBPP."
-              hfUrl="https://huggingface.co/josephmayo/qwen2.5-coder-adapter"
             />
 
             <ModelCard
