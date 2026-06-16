@@ -172,13 +172,13 @@ function ModelCard({
 export default function Home() {
   const projects = [
     {
-      image: "/unfetter_proxy.png",
-      title: "Red Teaming Framework",
-      icon: "fa-solid fa-crosshairs",
-      description: "Internal adversarial testing framework for red teaming and evaluating my own models. Multi-turn jailbreak attack generation, automated compliance scoring, and refusal direction analysis.",
-      tags: ["python", "red teaming", "adversarial testing"],
+      image: "/modelfang.png",
+      title: "DR-OPIC",
+      icon: "fa-solid fa-route",
+      description: "ML framework for fine-tuning SLMs via Domain-Routed On-Policy Iterative Correction. Combines verified repair, delta-span subtraction, and ZPD-weighted curriculum scheduling. L = L_self + λ_r L_repair + λ_delta L_delta, where w_zpd = 4·p̃·(1−p̃) and p̃ = (s+0.5)/(K+1).",
+      tags: ["python", "SLM training", "PyTorch", "verifier"],
       links: [
-        { href: "https://github.com/HOLYKEYZ/unfetter_proxy", label: "source", icon: "fa-brands fa-github" }
+        { href: "https://github.com/HOLYKEYZ/DR-OPIC", label: "source", icon: "fa-brands fa-github" }
       ]
     },
     {
