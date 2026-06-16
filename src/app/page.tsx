@@ -172,7 +172,7 @@ function ModelCard({
 export default function Home() {
   const projects = [
     {
-      image: "/modelfang.png",
+      image: "/dr-opic.png",
       title: "DR-OPIC",
       icon: "fa-solid fa-route",
       description: "ML framework for fine-tuning SLMs via Domain-Routed On-Policy Iterative Correction. Combines verified repair, delta-span subtraction, and ZPD-weighted curriculum scheduling. L = L_self + λ_r L_repair + λ_delta L_delta, where w_zpd = 4·p̃·(1−p̃) and p̃ = (s+0.5)/(K+1).",
