@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Header Scroll Effect (Glassmorphism enhancer)
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
+        if (!nav) return;
         if (window.scrollY > 50) {
             nav.classList.add('scrolled');
         } else {
